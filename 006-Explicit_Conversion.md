@@ -7,7 +7,7 @@
     숫자 → `JsExpression` 변환을 **명시적(explicit)** 또는
     **암시적(implicit)** 으로 제어.
 -   **핵심 차이**
-    -   `explicit`: **반드시 캐스트** 필요 → `(JsExpression) -1`\
+    -   `explicit`: **반드시 캐스트** 필요 → `(JsExpression) -1`
     -   `implicit`: **캐스트 없이** 대입 가능 → `JsExpression e = -1`
 
 ------------------------------------------------------------------------
