@@ -3,7 +3,7 @@
 ## 요약
 
 -   **의도**: 숫자 타입(`int`, `double`)을 **JavaScript 표현식
-    문자열**로 감싸는 래퍼 `JsExpression`를 만들고,\
+    문자열**로 감싸는 래퍼 `JsExpression`를 만들고
     숫자 → `JsExpression` 변환을 **명시적(explicit)** 또는
     **암시적(implicit)** 으로 제어.
 -   **핵심 차이**
@@ -77,7 +77,7 @@ public static explicit operator JsExpression(double value) => new JsExpression(v
 
 -   특히 오버로드/제네릭 문맥에서 **모호성/예상치 못한 변환**을 줄임.
 
-> 가이드라인:\
+> 가이드라인:
 > - **의미 손실 가능성**(예: 소수점 포맷, 문화권별 `ToString()`)
 > - **비용 큰 변환**(무거운 래핑/검증)
 > - **의도적 설계 제약**(JS 표현식과 일반 숫자의 혼동 방지)
@@ -99,7 +99,7 @@ public static explicit operator JsExpression(double value) => new JsExpression(v
 
 1.  **`ToString()` 포맷 주의**
     -   `double.ToString()`은 문화권(CultureInfo)에 따라 `,`/`.` 등
-        포맷이 달라질 수 있습니다.\
+        포맷이 달라질 수 있습니다.
 
     -   JS 리터럴용이면 **InvariantCulture**를 권장:
 
