@@ -3,18 +3,18 @@
 ## 1. C#의 Equals / GetHashCode 개념
 
 -   **Equals(object)**\
-    두 객체가 "값 기준으로 같은지" 비교할 때 오버라이드.\
+    두 객체가 "값 기준으로 같은지" 비교할 때 오버라이드.
     (기본 Object.Equals는 참조 비교 → 동일 인스턴스 여부)
 
 -   **GetHashCode()**\
-    Equals가 true이면 반드시 같은 해시코드를 반환해야 함.\
+    Equals가 true이면 반드시 같은 해시코드를 반환해야 함.
     → `Dictionary`, `HashSet`, `Distinct()` 등 해시 기반 컬렉션에서
     필수.
 
--   **연산자 오버로드 (`==`, `!=`)**\
+-   **연산자 오버로드 (`==`, `!=`)**
     Equals와 일관성 있게 구현해야 함.
 
--   **IEqualityComparer`<T>`{=html}**\
+-   **IEqualityComparer`<T>`{=html}**
     외부에서 비교 기준을 따로 정의하고 싶을 때 사용.
     (`Distinct(new PersonComparator())`)
 
@@ -68,7 +68,7 @@ var distinctPersons = persons.Distinct().ToList(); // 중복 제거됨
 -   대신 `operator==` / `operator!=` 연산자를 **직접 재정의**하여 동등성
     기준 정의.
 -   해시 기반 컬렉션(`std::unordered_set`, `std::unordered_map`)을 쓸
-    때는\
+    때는
     `std::hash<T>`를 특수화하거나 커스텀 해시 functor 제공.
 
 ------------------------------------------------------------------------
@@ -134,8 +134,8 @@ int main() {
 ## 4. 요약
 
 -   C#은 **Equals + GetHashCode + (==, !=)** 세트를 반드시 일관되게
-    구현해야 한다.\
+    구현해야 한다.
 -   C++은 **operator==, operator!=, std::hash 특수화**를 조합해 동일한
-    동작을 얻는다.\
+    동작을 얻는다.
 -   두 언어 모두 "값 기반 동등성"을 정의할 수 있고, 해시 기반
     컬렉션에서도 올바르게 동작하도록 준비해야 한다.
