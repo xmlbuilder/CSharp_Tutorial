@@ -15,7 +15,7 @@
 | 참조 비교        | `ReferenceEquals(a,b)` 또는 `(object)a == (object)b` | `==` (참조/포인터 비교)        | 객체 주소 비교: `&s1 == &s2` (동일 객체 여부) |
 | 문자열 리터럴 풀 | 있음. 리터럴 자동 인터닝 (`string.Intern`)          | 있음. 리터럴 자동 인터닝 (`String.intern()`) | 표준 **보장 없음** (컴파일러가 상수 병합할 수도, 안 할 수도) |
 | 대소문자 무시    | `Equals(x,y,StringComparison.OrdinalIgnoreCase)`    | `equalsIgnoreCase()`(간단), `Collator`(로캘) | 표준 라이브러리 직접 지원 없음(직접 변환/비교 또는 라이브러리 사용) |
-| 주의점           | `String.Copy`는 .NET Core에서 **비권장**(obsolete). 참조 비교는 인터닝에 영향 받음 | 리터럴은 풀에 intern됨 → `==`가 **우연히** true일 수 있으나, **항상 `equals` 사용** | `const char*` 리터럴의 `==`는 **포인터 비교**. 내용 비교엔 `std::string` 또는 `std::strcmp` |
+| 주의점           | `String.Copy`는 .NET Core에서 **비권장**(obsolete). \ 참조 비교는 인터닝에 영향 받음 | 리터럴은 풀에 intern됨 → `==`가 **우연히** true일 수 있으나, **항상 `equals` 사용** | `const char*` 리터럴의 `==`는 **포인터 비교**. 내용 비교엔 `std::string` 또는 `std::strcmp` |
 
 
 ## 2) 질문 코드(C#) 포인트 해설
