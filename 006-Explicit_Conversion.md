@@ -78,7 +78,7 @@ public static explicit operator JsExpression(double value) => new JsExpression(v
 -   특히 오버로드/제네릭 문맥에서 **모호성/예상치 못한 변환**을 줄임.
 
 > 가이드라인:\
-> - **의미 손실 가능성**(예: 소수점 포맷, 문화권별 `ToString()`),\
+> - **의미 손실 가능성**(예: 소수점 포맷, 문화권별 `ToString()`)
 > - **비용 큰 변환**(무거운 래핑/검증),\
 > - **의도적 설계 제약**(JS 표현식과 일반 숫자의 혼동 방지)\
 > 이 포함되면 `explicit`을 선호하세요.
