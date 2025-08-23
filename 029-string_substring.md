@@ -92,7 +92,7 @@ int main() {
 | `std::string::starts_with(string_view)` *(C++20)* | 문자열이 특정 값으로 시작하는지 여부 반환 |
 | `std::string::ends_with(string_view)` *(C++20)* | 문자열이 특정 값으로 끝나는지 여부 반환 |
 | `std::string::contains(string_view)` *(C++23)* | 문자열에 특정 값이 포함되어 있는지 여부 반환 |
----
+
 
 ⚠️ 한글 등 UTF-8 문자열은 std::string에서 문자 단위가 아닌 바이트 단위로 처리되므로, 정확한 문자 추출을 위해서는 std::wstring 또는 외부 라이브러리(ICU, fmt, etc.)가 필요합니다.
 
