@@ -11,6 +11,80 @@
 
 💡 GUI 없이도 이벤트를 사용할 수 있다는 점에서, C#은 비동기 메시징, 로깅, 알림 시스템 등 다양한 영역에 응용 가능해요.
 
+## 전체 코드
+```csharp
+delegate void DelegateType(string message);
+
+class A
+{
+    public event DelegateType EventHandler;
+    public void Func(string Message){
+        EventHandler(Message);
+    }
+}
+
+class B{
+    public void PrintA(string Message){
+        Console.WriteLine(Message);
+    }
+
+    public void PrintB(string Message){
+        Console.WriteLine(Message);
+    }
+}
+
+class Program
+{
+    static int Main(string[] args)
+    {
+        
+        A Test1 = new A();
+        B Test2 = new B();
+
+        Test1.EventHandler += new DelegateType(Test2.PrintA);
+        Test1.EventHandler += new DelegateType(Test2.PrintB);
+
+        Test1.Func("Good!!");
+        /*
+        Good!!
+        Good!!
+         */
+        
+        
+        Test1.EventHandler -= Test2.PrintB;
+        Test1.Func("Hi ~");
+        //Hi ~
+        
+        Test1.EventHandler -= Test2.PrintA;
+        //Test1.Func("Hellow World");
+        /*
+        Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
+        at A.Func(String Message) in D:\RiderProject\ConsoleApp1\ConsoleApp1\Program.cs:line 15
+        at Program.Main(String[] args) in D:\RiderProject\ConsoleApp1\ConsoleApp1\Program.cs:line 52
+         */
+
+        Test1.EventHandler += Test2.PrintA;
+        Test1.EventHandler += Test2.PrintB;
+        Test1.Func("Hellow World");
+        /*
+        Hellow World
+        Hellow World
+         */
+//
+//         이벤트 사용 예제 (WinForms에 사용)
+//         Form 사용 예제
+//         this.button1.Click += new System.EventHandler(this.button1_click);
+//
+//         private void button1_click(object sender, EventArgs e)
+//         {
+//             //
+//         }
+
+        return 0;
+    }
+}
+```
+
 
 
 ## ☕ Java에서의 대안
