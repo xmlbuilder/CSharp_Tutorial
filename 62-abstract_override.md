@@ -93,7 +93,7 @@ Java에서는 getName() / setName()으로 프로퍼티를 구현합니다. C#의
 
 
 ## 💻 C++에서의 대응
-C++에서는 virtual과 = 0을 사용해 **순수 가상 함수(pure virtual function)**를 정의합니다.
+C++에서는 virtual과 = 0을 사용해 **순수 가상 함수(pure virtual function)** 를 정의합니다.
 ```cpp
 class Animal {
 public:
@@ -127,6 +127,7 @@ C++에서는 override 키워드가 선택적이지만, 명시하면 실수 방�
 | C++    | 클래스 + `virtual` 키워드 | `virtual void method() = 0;`        | `override` (선택적)     | `getName()`, `setName()` 메서드 |
 
 ---
+
 
 
 
