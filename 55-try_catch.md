@@ -98,7 +98,7 @@ except ZeroDivisionError as e:
     print(f"Error: {e}")
 finally:
     print("Always runs")
-
+```
 
 - raise Exception("message"): 예외 발생
 - try-except-finally: 구조는 간결하고 직관적
