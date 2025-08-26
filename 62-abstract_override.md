@@ -65,7 +65,8 @@ class Program
 - Main()에서 다형성(polymorphism)으로 Animal 타입 변수로 Cat, Dog 객체를 다룸
 
 ## ☕ Java에서의 대응
-Java에서는 abstract class와 abstract method 키워드를 사용합니다.  override는 명시적 키워드가 없지만 @Override 어노테이션을 붙여서 컴파일러가 확인하도록 합니다.
+Java에서는 abstract class와 abstract method 키워드를 사용합니다.  
+override는 명시적 키워드가 없지만 @Override 어노테이션을 붙여서 컴파일러가 확인하도록 합니다.
 ```java
 abstract class Animal {
     public abstract String getName();
@@ -127,6 +128,7 @@ C++에서는 override 키워드가 선택적이지만, 명시하면 실수 방�
 | C++    | 클래스 + `virtual` 키워드 | `virtual void method() = 0;`        | `override` (선택적)     | `getName()`, `setName()` 메서드 |
 
 ---
+
 
 
 
