@@ -1,7 +1,6 @@
 # 🧵 C#, C++, Java, Python의 기본 Thread 생성 방식 비교
 
-C#에서 쓰레드를 만드는 기본적인 클래스로 System.Threading.Thread라는 클래스가 있다. 
-이 클래스의 생성자(Constructor)에 실행하고자 하는 메서드를 델리게이트로 지정한 후, 
+C#에서 쓰레드를 만드는 기본적인 클래스로 System.Threading.Thread라는 클래스가 있다.  이 클래스의 생성자(Constructor)에 실행하고자 하는 메서드를 델리게이트로 지정한 후, 
 Thread클래스 객체에서 Start() 메서드를 호출하면 새로운 쓰레드가 생성되어 실행되게 된다.
 
 | 언어     | 쓰레드 클래스 / 방식         | 실행 메서드 |
