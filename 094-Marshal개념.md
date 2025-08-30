@@ -109,8 +109,54 @@ namespace GrammarTest
         }
     }
 }
+```
+## 샘플 코드
+```csharp
 
+using System.Runtime.InteropServices;
+using System.Text;
 
+namespace Test
+{
+    [StructLayout(LayoutKind.Sequential)]
+    class Sample
+    {
+        [MarshalAs(UnmanagedType.I4, SizeConst = sizeof(int))]
+        private int var1 = 0;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
+        private byte[] var2;
+
+        internal string Var2
+        {
+            [return: MarshalAs(UnmanagedType.AnsiBStr, SizeConst = 32)]
+            get
+            {
+                if (var2 == null) this.Var2 = string.Empty;
+                return Encoding.Default.GetString(var2).TrimEnd('\0');
+            }
+            
+            [param: MarshalAs(UnmanagedType.AnsiBStr, SizeConst = 32)]
+            set
+            {
+                var2 = Encoding.Default.GetBytes(value);
+                Array.Resize(ref var2, 32);
+            }
+        }
+    }
+    
+    class Program
+    {
+        public static void Main(String[] args)
+        {
+            Sample sample = new Sample();
+            sample.Var2 = "Hello World";
+            Console.WriteLine(sample.Var2);
+            Console.WriteLine(sample.Var2.Length);
+            
+        }
+    }
+}
 ```
 
 
