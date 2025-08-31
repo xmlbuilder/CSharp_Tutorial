@@ -1,7 +1,7 @@
 # C# BackgroundWorker
 
 Qt QThread 예제는 백그라운드에서 작업을 수행하면서 UI 스레드에 안전하게 진행 상황(progress)과 완료 상태를 알리는 패턴을 구현.
-이 개념은 C++, Java, Python에도 각각 비슷한 방식이 있습니다.
+  이 개념은 C++, Java, Python에도 각각 비슷한 방식이 있습니다.
 
 ## 📊 비교표 — C#, C++, Java, Python의 BackgroundWorker 유사 개념
 | 언어       | 클래스 / 패턴                 | 특징                                                                                  | UI 업데이트 방식           |
