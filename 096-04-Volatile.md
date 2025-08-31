@@ -1,14 +1,11 @@
 
 # C# volatile
-
-## 코드
-```csharp
-/*
 volatile 키워드는 동시에 실행되는 여러 스레드에 의해 필드가 수정될 수 있음을 나타냅니다. 
 컴파일러, 런타임 시스템 및 하드웨어는 성능상의 이유로 메모리 위치에 대한 읽기 및 쓰기를 다시 정렬할 수 있습니다. 
 volatile로 선언된 필드는 특정 종류의 최적화에서 제외됩니다.
-*/
 
+## 코드
+```csharp
 public class Example
 {
     public volatile int x;
