@@ -15,6 +15,160 @@ Qt QThread 예제는 백그라운드에서 작업을 수행하면서 UI 스레�
 
 
 ## 💡 언어별 예시
+### ✅ C#
+```csharp
+using System.ComponentModel;
+namespace backgroundworkertest
+{
+    class MainClass
+    {
+        public void do_work(object sender, DoWorkEventArgs e) {
+            
+            Console.WriteLine("Start");
+            BackgroundWorker b = (BackgroundWorker) sender;
+           
+            for (int i = 0; i < 100; i++)
+            {
+                long total = 0;
+                for (int j = 0; j < 1000000; j++)
+                {
+                    total += j;
+                }
+                b.ReportProgress(i);
+            }
+            Thread.Sleep(50);
+            b.ReportProgress(100);
+            Console.WriteLine("Done");
+        }
+
+        public static void Main (string[] args)
+        {
+            for(int i = 0; i < 6; i++) {
+                MainClass mainClass = new MainClass();
+                mainClass.Run();
+            }
+            Thread.Sleep(2000);
+            Console.WriteLine("Really done");
+        }
+        
+        private void Bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Console.WriteLine("Progress : {0}", e.ProgressPercentage);
+        }
+        
+        private void Bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Console.WriteLine("Task completed");
+        }
+
+        private void Run()
+        {
+            BackgroundWorker b = new BackgroundWorker();
+            b.WorkerReportsProgress = true;
+            b.DoWork += new DoWorkEventHandler(do_work);
+            b.ProgressChanged += Bg_ProgressChanged;
+            b.RunWorkerCompleted += Bg_RunWorkerCompleted;
+            b.RunWorkerAsync();
+        }
+    }
+}
+```
+
+### ✅ C++
+```cpp
+class WorkerThread : public QThread
+{
+    Q_OBJECT
+public:
+    explicit WorkerThread(QObject *parent = nullptr);
+    void run() override{
+        int iVal = 0;
+        while(true){
+            if(m_bForceStop) break;
+            msleep(200);
+            emit progressChanged(iVal);
+            iVal++;
+            if(iVal > 100) iVal = 0;
+        }
+        emit progressChanged(0);
+    }
+    void setForceStop() { m_bForceStop = true; }
+signals:
+     void progressChanged(int iVal);
+private:
+     bool m_bForceStop {false};
+};
+
+#pragma once
+#include <QMainWindow>
+
+class WorkerThread;
+    QT_BEGIN_NAMESPACE
+    namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+public slots:
+    void onProgressChanged(int iVal);
+private slots:
+    void on_actionStop_triggered();
+    void on_actionOpen_triggered();
+private:
+    Ui::MainWindow *ui;
+    WorkerThread* m_pWorkThread {nullptr};
+};
+
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QDebug>
+#include "workerthread.h"
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::onProgressChanged(int iVal)
+{
+    ui->progressBar->setValue(iVal);
+}
+
+void MainWindow::on_actionStop_triggered()
+{
+    if(m_pWorkThread->isRunning()){
+        m_pWorkThread->setForceStop();
+        m_pWorkThread = nullptr;
+    }
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    if(m_pWorkThread != nullptr && m_pWorkThread->isRunning()) return;
+    
+    m_pWorkThread = new WorkerThread;
+    // Connect our signal and slot
+    connect(m_pWorkThread, SIGNAL(progressChanged(int)),
+            SLOT(onProgressChanged(int)));
+    connect(m_pWorkThread, SIGNAL(finished()),
+            m_pWorkThread, SLOT(deleteLater()));
+    // Run, Forest, run!
+    m_pWorkThread->start();
+}
+
+```
+
 ### ✅ Java — SwingWorker
 ```java
 import javax.swing.*;
