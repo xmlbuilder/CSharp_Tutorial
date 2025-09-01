@@ -103,10 +103,10 @@ os.rmdir("/Users/jeongjunghwan/Temp/Sample")
 
 # 디렉토리 삭제 (재귀적)
 shutil.rmtree("/Users/jeongjunghwan/Temp/Sample")
-
+```
 
 os.makedirs()는 중간 디렉토리까지 생성하며, exist_ok=True로 이미 존재해도 에러가 발생하지 않아요. shutil.rmtree()는 하위 디렉토리까지 모두 삭제합니다.
-```
+
 
 ## 📊 언어별 디렉토리 처리 비교
 
@@ -118,4 +118,5 @@ os.makedirs()는 중간 디렉토리까지 생성하며, exist_ok=True로 이미
 | Python   | `os.makedirs()`                  | `os.rmdir()`                  | `shutil.rmtree()`                  |
 
 ---
+
 
