@@ -272,12 +272,13 @@ int main() {
 ### 📌 파일 시스템 감지 기능 비교 요약
 | 언어/플랫폼 | 감지 방식           | 하위 디렉토리 지원 | 감지 이벤트 종류                            | 난이도 |
 |-------------|---------------------|---------------------|---------------------------------------------|--------|
-| C#          | `FileSystemWatcher` | ✅                  | Created, Deleted, Changed, Renamed, Error   | 쉬움   |
-| Python      | `watchdog`          | ✅                  | Created, Deleted, Modified, Moved           | 쉬움   |
-| Java        | `WatchService`      | ❌ (직접 등록 필요) | ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY    | 중간   |
-| C++         | `inotify` / `FSEvents` / `ReadDirectoryChangesW` | ❌/✅ | OS별로 다름 (Create, Modify, Delete, Move 등) | 어려움 |
+| C#         | `FileSystemWatcher` | ✅                  | Created, Deleted, Changed, Renamed, Error  | 쉬움  |
+| Python     | `watchdog`          | ✅                  | Created, Deleted, Modified, Moved          | 쉬움  |
+| Java       | `WatchService`      | ❌ (직접 등록 필요) | ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY    | 중간  |
+| C++        | `inotify`/`FSEvents`/`ReadDirectoryChangesW`| ❌/✅ | OS별로 다름 (Create, Modify, Delete, Move 등)|어려움|
 
 ---
+
 
 
 
