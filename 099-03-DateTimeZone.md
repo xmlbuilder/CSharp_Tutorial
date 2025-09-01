@@ -168,4 +168,49 @@ print(date.strftime("%Y-%m-%d %H:%M %Z"))  # 2015-11-11 18:30 KST
 
 
 
+## 📅 DateTime Format Specifiers (Part 1)
+| Specifier | Meaning                        | Sample   | Result                          |
+|-----------|--------------------------------|----------|----------------------------------|
+| d         | Date                           | {0:d}    | 7/6/2016                         |
+| dd        | Day, zero-padded               | {0:dd}   | 06                               |
+| ddd       | Short day name                 | {0:ddd}  | Wed                              |
+| dddd      | Long day name                  | {0:dddd} | Wednesday                        |
+| D         | Long date                      | {0:D}    | Wednesday, July 6, 2016          |
+| f         | Full date and time, short      | {0:f}    | Wednesday, July 6, 2016 6:30 PM  |
+| ff        | Second fractions, 2 digits     | {0:ff}   | 20                               |
+| fff       | Second fractions, 3 digits     | {0:fff}  | 201                              |
+| ffff      | Second fractions, 4 digits     | {0:ffff} | 2016                             |
+| F         | Full date and time, long       | {0:F}    | Wednesday, July 6, 2016 6:30:14 PM |
+
+
+## ⏰ DateTime Format Specifiers (Part 2)
+| Specifier | Meaning                             | Sample   | Result                             |
+|-----------|-------------------------------------|----------|-------------------------------------|
+| g         | Default date and time               | {0:g}    | 7/6/2016 6:30 PM                    |
+| gg        | Era                                 | {0:gg}   | AD                                  |
+| hh        | Hour (2 digits, 12-hour)            | {0:hh}   | 06                                  |
+| H         | Hour (24-hour)                      | {0:H}    | 18                                  |
+| M         | Month and day                       | {0:M}    | July 6                              |
+| m         | Minutes, zero-padded                | {0:m}    | 30                                  |
+| MM        | Month, zero-padded                  | {0:MM}   | 07                                  |
+| MMM       | Month name                          | {0:MMM}  | Jul                                 |
+| MMMM      | Full month name                     | {0:MMMM} | July                                |
+| r         | RFC1123 date                        | {0:r}    | Wed, 06 Jul 2016 18:30:14 GMT       |
+| s         | Sortable date string                | {0:s}    | 2016-07-06T18:30:14                 |
+| t         | Short time                          | {0:t}    | 6:30 PM                             |
+| T         | Long time                           | {0:T}    | 6:30:14 PM                          |
+| tt        | AM/PM                               | {0:tt}   | PM                                  |
+| u         | Universal sortable local time       | {0:u}    | 2016-07-06 18:30:14Z                |
+| U         | Universal GMT                       | {0:U}    | Wednesday, July 6, 2016 9:30:14 AM  |
+| y         | 2 digit year                        | {0:y}    | 16                                  |
+| yy        | 2 digit year                        | {0:yy}   | 16                                  |
+| yyyy      | 4 digit year                        | {0:yyyy} | 2016                                |
+| zz        | 2 digit timezone offset             | {0:zz}   | +09                                 |
+| zzz       | Full time zone offset               | {0:zzz}  | +09:00                              |
+---
+
+
+
+
+
 
