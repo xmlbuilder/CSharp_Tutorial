@@ -15,7 +15,7 @@ namespace Geometry
     public PlaneEquation(Point3D P, Vector3D N)
     {
       if (!this.Create(P, N))
-        throw new ArgumentException(ErrMessage.GetString(425481900));
+        throw new ArgumentException("Invalid Plane Equation");
     }
 
     public PlaneEquation(double a, double b, double c, double d)
@@ -79,4 +79,5 @@ namespace Geometry
     }
   }
 }
+
 ```
