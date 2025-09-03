@@ -242,3 +242,4 @@ Console.WriteLine($"길이: {direction.Length}"); // 출력: 1.0
 
 
 
+
