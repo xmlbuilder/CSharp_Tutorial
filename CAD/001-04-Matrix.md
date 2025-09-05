@@ -1,337 +1,199 @@
 # Matrix
 ```csharp
+using System;
+
 namespace Geometry
 {
-  public class Matrix
+  /// <summary>
+  /// 2×2/3×3/4×4 행렬에 대한 소규모 선형대수 유틸리티.
+  /// 주의: 3×3 관련 메서드는 전달된 배열의 좌상단 3×3 블록만 사용합니다(배열이 4×4여도 OK).
+  /// </summary>
+  public static class Matrix
   {
-    public static bool IsIdentity4(double[,] matrix)
+    private const double DetEpsilon = 1e-12;
+
+    /// <summary>좌상단 3×3 블록의 행렬식</summary>
+    public static double Determinant3(double[,] m)
     {
-      return matrix[0, 0] == 1.0 && matrix[0, 1] == 0.0 && matrix[0, 2] == 0.0 
-      && matrix[0, 3] == 0.0 && matrix[1, 0] == 0.0 && matrix[1, 1] == 1.0 
-      && matrix[1, 2] == 0.0 && matrix[1, 3] == 0.0 && matrix[2, 0] == 0.0 
-      && matrix[2, 1] == 0.0 && matrix[2, 2] == 1.0 && matrix[2, 3] == 0.0 
-      && matrix[3, 0] == 0.0 && matrix[3, 1] == 0.0 && matrix[3, 2] == 0.0 
-      && matrix[3, 3] == 1.0;
+      if (m == null) throw new ArgumentNullException(nameof(m));
+      // a = m[0,0], b = m[0,1], c = m[0,2] ...
+      double a = m[0, 0], b = m[0, 1], c = m[0, 2];
+      double d = m[1, 0], e = m[1, 1], f = m[1, 2];
+      double g = m[2, 0], h = m[2, 1], i = m[2, 2];
+
+      // a(ei − fh) − b(di − fg) + c(dh − eg)
+      return a * (e * i - h * f)
+           - b * (d * i - g * f)
+           + c * (d * h - g * e);
     }
 
-    public static void Multiply(double scalar, ref double[,] matrix)
+    /// <summary>좌상단 2×2 블록의 행렬식</summary>
+    public static double Determinant2(double[,] m)
     {
-      int length1 = matrix.GetLength(0);
-      int length2 = matrix.GetLength(1);
-      for (int index1 = 0; index1 < length1; ++index1)
-      {
-        for (int index2 = 0; index2 < length2; ++index2)
-          matrix[index1, index2] *= scalar;
-      }
+      if (m == null) throw new ArgumentNullException(nameof(m));
+      return m[0, 0] * m[1, 1] - m[0, 1] * m[1, 0];
     }
 
-    public static double[] Multiply3x(double[,] a, double[] b)
+    /// <summary>
+    /// 좌상단 3×3 블록의 역행렬을 계산하여 4×4로 돌려줍니다.
+    /// (0..2,0..2)는 역행렬 값으로 채우고, 나머지는 영( [3,3]=1 )으로 설정합니다.
+    /// </summary>
+    public static bool Inverse3(double[,] m, out double[,] inv)
     {
-      double[] numArray = new double[3];
-      for (int index1 = 0; index1 < 3; ++index1)
-      {
-        for (int index2 = 0; index2 < 3; ++index2)
-          numArray[index1] += a[index1, index2] * b[index2];
-      }
-      return numArray;
-    }
+      if (m == null) throw new ArgumentNullException(nameof(m));
 
-    public static double[] Multiply4x(double[,] a, double[] b)
-    {
-      double[] numArray = new double[4];
-      for (int index1 = 0; index1 < 4; ++index1)
-      {
-        for (int index2 = 0; index2 < 4; ++index2)
-          numArray[index1] += a[index1, index2] * b[index2];
-      }
-      return numArray;
-    }
+      inv = new double[4, 4];
+      double det = Determinant3(m);
+      if (Math.Abs(det) < DetEpsilon) return false;
 
-    public static double[] Multiply(double[,] a, double[] b)
-    {
-      double[] numArray = new double[b.Length];
-      for (int index1 = 0; index1 < a.GetLength(0); ++index1)
-      {
-        for (int index2 = 0; index2 < a.GetLength(1); ++index2)
-          numArray[index1] += a[index1, index2] * b[index2];
-      }
-      return numArray;
-    }
+      // 코팩터(Adjugate) / det
+      inv[0, 0] = (m[1, 1] * m[2, 2] - m[1, 2] * m[2, 1]) / det;
+      inv[0, 1] = -(m[0, 1] * m[2, 2] - m[0, 2] * m[2, 1]) / det;
+      inv[0, 2] = (m[0, 1] * m[1, 2] - m[0, 2] * m[1, 1]) / det;
 
-    public static double[] MultiplyX3(double[] a, double[,] b)
-    {
-      double[] numArray = new double[3];
-      for (int index1 = 0; index1 < 3; ++index1)
-      {
-        for (int index2 = 0; index2 < 3; ++index2)
-          numArray[index1] += a[index2] * b[index2, index1];
-      }
-      return numArray;
-    }
+      inv[1, 0] = -(m[1, 0] * m[2, 2] - m[1, 2] * m[2, 0]) / det;
+      inv[1, 1] = (m[0, 0] * m[2, 2] - m[0, 2] * m[2, 0]) / det;
+      inv[1, 2] = -(m[0, 0] * m[1, 2] - m[1, 0] * m[0, 2]) / det;
 
-    internal static double[] Multiply4x4(double[] _param0, double[,] _param1)
-    {
-      double[] numArray = new double[4];
-      for (int index1 = 0; index1 < 4; ++index1)
-      {
-        for (int index2 = 0; index2 < 4; ++index2)
-          numArray[index1] += _param0[index2] * _param1[index2, index1];
-      }
-      return numArray;
-    }
+      inv[2, 0] = (m[1, 0] * m[2, 1] - m[1, 1] * m[2, 0]) / det;
+      inv[2, 1] = -(m[0, 0] * m[2, 1] - m[0, 1] * m[2, 0]) / det;
+      inv[2, 2] = (m[0, 0] * m[1, 1] - m[0, 1] * m[1, 0]) / det;
 
-    public static double[,] Multiply4x4(double[,] a, double[,] b)
-    {
-      double[,] numArray = new double[4, 4];
-      for (int index1 = 0; index1 < 4; ++index1)
-      {
-        for (int index2 = 0; index2 < 4; ++index2)
-        {
-          for (int index3 = 0; index3 < 4; ++index3)
-            numArray[index1, index2] += a[index1, index3] * b[index3, index2];
-        }
-      }
-      return numArray;
-    }
-
-    [CLSCompliant(false)]
-    public static double[,] Multiply(double[,] a, double[,] b)
-    {
-      int length1 = a.GetLength(0);
-      int length2 = a.GetLength(1);
-      int length3 = b.GetLength(1);
-      double[,] numArray = new double[length1, length3];
-      for (int index1 = 0; index1 < length1; ++index1)
-      {
-        for (int index2 = 0; index2 < length3; ++index2)
-        {
-          for (int index3 = 0; index3 < length2; ++index3)
-            numArray[index1, index2] += a[index1, index3] * b[index3, index2];
-        }
-      }
-      return numArray;
-    }
-
-    internal static Equation[] MergeEquation(Equation[] _param0, Equation[] _param1)
-    {
-      Equation[] equationArray = new Equation[_param0.Length];
-      int length = _param0.Length;
-      for (int index1 = 0; index1 < length; ++index1)
-      {
-        equationArray[index1] = new Equation()
-        {
-          Coefficients = new List<Coefficient>()
-        };
-        for (int pos = 0; pos < length; ++pos)
-        {
-          for (int index2 = 0; index2 < _param0[index1].Coefficients.Count; ++index2)
-          {
-            Coefficient coefficient1 = _param0[index1].Coefficients[index2];
-            Coefficient coefficient2 = _param1[coefficient1.Pos][pos];
-            if (coefficient2.Pos != -1)
-              equationArray[index1].Add(pos, coefficient1.Val * coefficient2.Val);
-          }
-        }
-      }
-      return equationArray;
-    }
-
-    public static double[,] Multiply(Equation[] a, Equation[] b, int nSize)
-    {
-      int num = nSize / 2;
-      double[,] numArray = new double[a.Length, nSize];
-      int length = a.Length;
-      for (int index = 0; index < length; ++index)
-      {
-        for (int pos = 0; pos < length; ++pos)
-        {
-          foreach (Coefficient coefficient1 in a[index].Coefficients)
-          {
-            Coefficient coefficient2 = b[coefficient1.Pos][pos];
-            if (coefficient2.Pos != -1)
-              numArray[index, pos - index + num] += coefficient1.Val * coefficient2.Val;
-          }
-        }
-      }
-      return numArray;
-    }
-
-    public static double[,] Multiply3x3(double[,] a, double[,] b)
-    {
-      double[,] numArray = new double[3, 3];
-      for (int index1 = 0; index1 < 3; ++index1)
-      {
-        for (int index2 = 0; index2 < 3; ++index2)
-        {
-          for (int index3 = 0; index3 < 3; ++index3)
-            numArray[index1, index2] += a[index1, index3] * b[index3, index2];
-        }
-      }
-      return numArray;
-    }
-
-    public static double[,] Transpose(double[,] matrix)
-    {
-      int length1 = matrix.GetLength(0);
-      int length2 = matrix.GetLength(1);
-      double[,] numArray = new double[length2, length1];
-      for (int index1 = 0; index1 < length1; ++index1)
-      {
-        for (int index2 = 0; index2 < length2; ++index2)
-          numArray[index2, index1] = matrix[index1, index2];
-      }
-      return numArray;
-    }
-
-    public static Equation[] Transpose(int n, int m, Equation[] equations)
-    {
-      Equation[] equationArray = new Equation[n];
-      for (int index = 0; index < n; ++index)
-        equationArray[index] = new Equation(0);
-      for (int pos = 0; pos < m; ++pos)
-      {
-        for (int index = 0; index < equations[pos].Coefficients.Count; ++index)
-        {
-          Coefficient coefficient = equations[pos].Coefficients[index];
-          equationArray[coefficient.Pos].Add(pos, coefficient.Val);
-        }
-      }
-      return equationArray;
-    }
-
-    public static double Determinant3(double[,] matrix)
-    {
-      double num1 = matrix[2, 2];
-      double num2 = matrix[1, 1];
-      double num3 = matrix[1, 2];
-      double num4 = matrix[1, 0];
-      double num5 = matrix[2, 0];
-      double num6 = matrix[2, 1];
-      return matrix[0, 0] * (num2 * num1 - num6 * num3) 
-        - matrix[0, 1] * (num4 * num1 - num5 * num3) 
-        + matrix[0, 2] * (num4 * num6 - num5 * num2);
-    }
-
-    public static double Determinant2(double[,] matrix)
-    {
-      return matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
-    }
-
-    public static bool Inverse3(double[,] matrix, out double[,] inverse)
-    {
-      inverse = new double[4, 4];
-      double num = Matrix.Determinant3(matrix);
-      if (Math.Abs(num) < 1E-12)
-        return false;
-      inverse[0, 0] = (matrix[1, 1] * matrix[2, 2] - matrix[1, 2] * matrix[2, 1]) / num;
-      inverse[0, 1] = -(matrix[0, 1] * matrix[2, 2] - matrix[2, 1] * matrix[0, 2]) / num;
-      inverse[0, 2] = (matrix[0, 1] * matrix[1, 2] - matrix[1, 1] * matrix[0, 2]) / num;
-      inverse[1, 0] = -(matrix[1, 0] * matrix[2, 2] - matrix[1, 2] * matrix[2, 0]) / num;
-      inverse[1, 1] = (matrix[0, 0] * matrix[2, 2] - matrix[2, 0] * matrix[0, 2]) / num;
-      inverse[1, 2] = -(matrix[0, 0] * matrix[1, 2] - matrix[1, 0] * matrix[0, 2]) / num;
-      inverse[2, 0] = (matrix[1, 0] * matrix[2, 1] - matrix[2, 0] * matrix[1, 1]) / num;
-      inverse[2, 1] = -(matrix[0, 0] * matrix[2, 1] - matrix[2, 0] * matrix[0, 1]) / num;
-      inverse[2, 2] = (matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0]) / num;
+      // 나머지 채움
+      inv[3, 3] = 1.0;
       return true;
     }
 
-    private static void Transpose(
-      double[,] _param0,
-      ref double[,] _param1,
-      int _param2,
-      int _param3)
+    /// <summary>
+    /// (private) 4×4 행렬에서 (skipRow, skipCol)을 제거한 3×3 소행렬을 생성합니다.
+    /// (기존 코드의 Transpose 기능과 이름만 다르고 동작은 동일)
+    /// </summary>
+    private static void BuildMinor3x3(double[,] source4x4, ref double[,] minor3x3, int skipRow, int skipCol)
     {
-      for (int index1 = 0; index1 < 3; ++index1)
+      if (minor3x3 == null || minor3x3.GetLength(0) != 3 || minor3x3.GetLength(1) != 3)
+        minor3x3 = new double[3, 3];
+
+      int rDst = 0;
+      for (int r = 0; r < 4; r++)
       {
-        for (int index2 = 0; index2 < 3; ++index2)
+        if (r == skipRow) continue;
+        int cDst = 0;
+        for (int c = 0; c < 4; c++)
         {
-          int index3 = index1 + (index1 >= _param2 ? 1 : 0);
-          int index4 = index2 + (index2 >= _param3 ? 1 : 0);
-          _param1[index1, index2] = _param0[index3, index4];
+          if (c == skipCol) continue;
+          minor3x3[rDst, cDst++] = source4x4[r, c];
         }
+        rDst++;
       }
     }
 
-    public static double Determinant4(double[,] matrix)
+    /// <summary>
+    /// (호환용) 기존 이름 유지: 4×4에서 (skipRow,skipCol) 제거한 3×3을 <paramref name="_param1"/>에 씁니다.
+    /// </summary>
+    private static void Transpose(double[,] _param0, ref double[,] _param1, int _param2, int _param3)
     {
-      double num1 = 0.0;
-      double num2 = 1.0;
-      double[,] matrix1 = new double[3, 3];
-      int index = 0;
-      while (index < 4)
-      {
-        Matrix.Transpose(matrix, ref matrix1, 0, index);
-        double num3 = Matrix.Determinant3(matrix1);
-        num1 += matrix[0, index] * num3 * num2;
-        ++index;
-        num2 *= -1.0;
-      }
-      return num1;
+      BuildMinor3x3(_param0, ref _param1, _param2, _param3);
     }
 
-    public static bool Inverse4(double[,] matrix, out double[,] inverse)
+    /// <summary>4×4 행렬식</summary>
+    public static double Determinant4(double[,] m)
     {
-      inverse = new double[4, 4];
-      double num1 = Matrix.Determinant4(matrix);
-      double[,] matrix1 = new double[3, 3];
-      if (Math.Abs(num1) < 1E-12)
-        return false;
-      for (int index1 = 0; index1 < 4; ++index1)
+      if (m == null) throw new ArgumentNullException(nameof(m));
+
+      double det = 0.0;
+      double sign = 1.0;
+      double[,] minor = new double[3, 3];
+
+      for (int c = 0; c < 4; c++)
       {
-        for (int index2 = 0; index2 < 4; ++index2)
+        BuildMinor3x3(m, ref minor, 0, c);
+        det += sign * m[0, c] * Determinant3(minor);
+        sign = -sign;
+      }
+      return det;
+    }
+
+    /// <summary>
+    /// 4×4 역행렬(Adjugate/Det) – 성공 시 <c>true</c>.
+    /// </summary>
+    public static bool Inverse4(double[,] m, out double[,] inv)
+    {
+      if (m == null) throw new ArgumentNullException(nameof(m));
+      inv = new double[4, 4];
+
+      double det = Determinant4(m);
+      if (Math.Abs(det) < DetEpsilon) return false;
+
+      double[,] minor = new double[3, 3];
+
+      for (int r = 0; r < 4; r++)
+      {
+        for (int c = 0; c < 4; c++)
         {
-          int num2 = 1 - (index1 + index2) % 2 * 2;
-          Matrix.Transpose(matrix, ref matrix1, index1, index2);
-          inverse[index2, index1] = Matrix.Determinant3(matrix1) * (double) num2 / num1;
+          BuildMinor3x3(m, ref minor, r, c);
+          double cof = Determinant3(minor);
+          if (((r + c) & 1) == 1) cof = -cof;      // 부호
+          inv[c, r] = cof / det;                  // 전치해서 배치(adjugateᵀ / det)
         }
       }
       return true;
     }
 
+    /// <summary>
+    /// 4×4 역행렬(전개식 기반, 고정 배치). 
+    /// ⚠️ 특이행렬 검사를 하지 않습니다(원본 구현 호환). det≈0이면 결과가 불안정/NaN일 수 있습니다.
+    /// </summary>
     public static double[,] Inverse4(double[,] a)
     {
-      double num1 = a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1];
-      double num2 = a[0, 0] * a[1, 2] - a[1, 0] * a[0, 2];
-      double num3 = a[0, 0] * a[1, 3] - a[1, 0] * a[0, 3];
-      double num4 = a[0, 1] * a[1, 2] - a[1, 1] * a[0, 2];
-      double num5 = a[0, 1] * a[1, 3] - a[1, 1] * a[0, 3];
-      double num6 = a[0, 2] * a[1, 3] - a[1, 2] * a[0, 3];
-      double num7 = a[2, 2] * a[3, 3] - a[3, 2] * a[2, 3];
-      double num8 = a[2, 1] * a[3, 3] - a[3, 1] * a[2, 3];
-      double num9 = a[2, 1] * a[3, 2] - a[3, 1] * a[2, 2];
-      double num10 = a[2, 0] * a[3, 3] - a[3, 0] * a[2, 3];
-      double num11 = a[2, 0] * a[3, 2] - a[3, 0] * a[2, 2];
-      double num12 = a[2, 0] * a[3, 1] - a[3, 0] * a[2, 1];
-      double num13 = 1.0 / (num1 * num7 - num2 * num8 + num3 
-        * num9 + num4 * num10 - num5 * num11 + num6 * num12);
+      if (a == null) throw new ArgumentNullException(nameof(a));
+
+      double A00A11 = a[0, 0] * a[1, 1] - a[1, 0] * a[0, 1];
+      double A00A12 = a[0, 0] * a[1, 2] - a[1, 0] * a[0, 2];
+      double A00A13 = a[0, 0] * a[1, 3] - a[1, 0] * a[0, 3];
+      double A01A12 = a[0, 1] * a[1, 2] - a[1, 1] * a[0, 2];
+      double A01A13 = a[0, 1] * a[1, 3] - a[1, 1] * a[0, 3];
+      double A02A13 = a[0, 2] * a[1, 3] - a[1, 2] * a[0, 3];
+
+      double A22A33 = a[2, 2] * a[3, 3] - a[3, 2] * a[2, 3];
+      double A21A33 = a[2, 1] * a[3, 3] - a[3, 1] * a[2, 3];
+      double A21A32 = a[2, 1] * a[3, 2] - a[3, 1] * a[2, 2];
+      double A20A33 = a[2, 0] * a[3, 3] - a[3, 0] * a[2, 3];
+      double A20A32 = a[2, 0] * a[3, 2] - a[3, 0] * a[2, 2];
+      double A20A31 = a[2, 0] * a[3, 1] - a[3, 0] * a[2, 1];
+
+      double invDet = 1.0 / (A00A11 * A22A33 - A00A12 * A21A33 + A00A13 * A21A32
+                           + A01A12 * A20A33 - A01A13 * A20A32 + A02A13 * A20A31);
+
       return new double[4, 4]
       {
         {
-          (a[1, 1] * num7 - a[1, 2] * num8 + a[1, 3] * num9) * num13,
-          (-a[0, 1] * num7 + a[0, 2] * num8 - a[0, 3] * num9) * num13,
-          (a[3, 1] * num6 - a[3, 2] * num5 + a[3, 3] * num4) * num13,
-          (-a[2, 1] * num6 + a[2, 2] * num5 - a[2, 3] * num4) * num13
+          (a[1,1]*A22A33 - a[1,2]*A21A33 + a[1,3]*A21A32) * invDet,
+          (-a[0,1]*A22A33 + a[0,2]*A21A33 - a[0,3]*A21A32) * invDet,
+          (a[3,1]*A02A13 - a[3,2]*A01A13 + a[3,3]*A01A12) * invDet,
+          (-a[2,1]*A02A13 + a[2,2]*A01A13 - a[2,3]*A01A12) * invDet
         },
         {
-          (-a[1, 0] * num7 + a[1, 2] * num10 - a[1, 3] * num11) * num13,
-          (a[0, 0] * num7 - a[0, 2] * num10 + a[0, 3] * num11) * num13,
-          (-a[3, 0] * num6 + a[3, 2] * num3 - a[3, 3] * num2) * num13,
-          (a[2, 0] * num6 - a[2, 2] * num3 + a[2, 3] * num2) * num13
+          (-a[1,0]*A22A33 + a[1,2]*A20A33 - a[1,3]*A20A32) * invDet,
+          (a[0,0]*A22A33 - a[0,2]*A20A33 + a[0,3]*A20A32) * invDet,
+          (-a[3,0]*A02A13 + a[3,2]*A00A13 - a[3,3]*A00A12) * invDet,
+          (a[2,0]*A02A13 - a[2,2]*A00A13 + a[2,3]*A00A12) * invDet
         },
         {
-          (a[1, 0] * num8 - a[1, 1] * num10 + a[1, 3] * num12) * num13,
-          (-a[0, 0] * num8 + a[0, 1] * num10 - a[0, 3] * num12) * num13,
-          (a[3, 0] * num5 - a[3, 1] * num3 + a[3, 3] * num1) * num13,
-          (-a[2, 0] * num5 + a[2, 1] * num3 - a[2, 3] * num1) * num13
+          (a[1,0]*A21A33 - a[1,1]*A20A33 + a[1,3]*A20A31) * invDet,
+          (-a[0,0]*A21A33 + a[0,1]*A20A33 - a[0,3]*A20A31) * invDet,
+          (a[3,0]*A01A13 - a[3,1]*A00A13 + a[3,3]*A00A11) * invDet,
+          (-a[2,0]*A01A13 + a[2,1]*A00A13 - a[2,3]*A00A11) * invDet
         },
         {
-          (-a[1, 0] * num9 + a[1, 1] * num11 - a[1, 2] * num12) * num13,
-          (a[0, 0] * num9 - a[0, 1] * num11 + a[0, 2] * num12) * num13,
-          (-a[3, 0] * num4 + a[3, 1] * num2 - a[3, 2] * num1) * num13,
-          (a[2, 0] * num4 - a[2, 1] * num2 + a[2, 2] * num1) * num13
+          (-a[1,0]*A21A32 + a[1,1]*A20A32 - a[1,2]*A20A31) * invDet,
+          (a[0,0]*A21A32 - a[0,1]*A20A32 + a[0,2]*A20A31) * invDet,
+          (-a[3,0]*A01A12 + a[3,1]*A00A12 - a[3,2]*A00A11) * invDet,
+          (a[2,0]*A01A12 - a[2,1]*A00A12 + a[2,2]*A00A11) * invDet
         }
       };
     }
   }
 }
+
 ```
+
