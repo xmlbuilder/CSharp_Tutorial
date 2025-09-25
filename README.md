@@ -158,25 +158,40 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 ## K. OOP: 클래스/인터페이스/상속/구조체
 - 클래스 기초/키워드
-  - [this](./053-this.md) · [static class](./054-static_class.md)
-  - [읽기 전용 속성](./052-읽기전용속성.md)
+  - [this](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/01-this.md)
+  - [static class](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/02-static_class.md)
+  - [읽기 전용 속성](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/03-읽기전용속성.md)
 - 생성자/수명주기
-  - [Static Constructor](./065-Static_Constructor.md)
-  - [Constructor Overloading](./066-Constructor_Overloading.md)
-  - [Optional Constructor](./067-Optional_Constructor.md)
+  - [Static Constructor](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/04-Static_Constructor.md)
+  - [Constructor Overloading](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/05-Constructor_Overloading.md)
+  - [Optional Constructor](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//06-Optional_Constructor.md)
 - 상속/오버라이드
-  - [base / 상속](./064-base_상속.md)
-  - [virtual/override](./063-virtual_override.md)
-  - [abstract/override](./062-abstract_override.md)
-  - [abstract class](./061-abstract_class.md)
-  - [abstract function](./061-abstract_class_abstract_function.md)
-  - [sealed](./068-Sealed.md)
-  - [익명 클래스](./069-익명클래스.md)
-  - [구조체](./070-구조체.md)
+  - [base / 상속](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//07-base_상속.md)
+  - [virtual/override](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//08-virtual_override.md)
+  - [abstract/override](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//09-abstract_override.md)
+  - [abstract class](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//10-abstract_class.md)
+  - [abstract function](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//11-abstract_class_abstract_function.md)
+  - [sealed](K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/./12-Sealed.md)
+  - [익명 클래스](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//13-익명클래스.md)
+  - [구조체](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//14-구조체.md)
+  - [동일한_이름의멤버변수](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//27-동일한_이름의멤버변수_문제.md)
+    
 - 인터페이스
-  - [interface 기초](./058-interface.md)
-  - [함수 중복 문제](./059-interface_함수_중복문제.md)
-  - [default interface method](./060-interface_default.md)
+  - [interface 기초](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//15-interface.md)
+  - [함수 중복 문제](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//16-interface_함수_중복문제.md)
+  - [default interface method](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//17-interface_default.md)
+
+- 유용한 함수 들
+  - [Newline](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//18-Newline.md)
+  - [optional](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//19-optional.md)
+  - [Indexer](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//20-Indexer.md)
+  - [Sealed](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//21-Sealed.md)
+  - [partial_class](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//22-partial_class.md)
+  - [CompareTo](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//23-ompareTo.md)
+  - [Find](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//24-ind.md)
+  - [Readonly속성](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//25-Readonly속성.md)
+  - [생성자](.K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체//26-Static_생성자.md)
+
 
 🔼 [맨 위로](#-목차바로가기)
 
