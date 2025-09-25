@@ -117,11 +117,11 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 🔼 [맨 위로](#-목차바로가기)
 
 ## H. 이벤트 & 데이터 바인딩
-- [Event 개념](./037-01-Event개념.md)
-- [EventHandler](./037-02-EventHandler.md)
-- [INotifyPropertyChanged](./037-02-INotifyPropertyChanged.md)
-- [BindingList](./037-04-BindingList.md)
-- [Mouse 이벤트 핸들링](./037-03-MouseEventHandler.md)
+- [Event 개념](./H.%20이벤트%20%26%20데이터%20바인딩/01-Event개념.md)
+- [EventHandler](./H.%20이벤트%20%26%20데이터%20바인딩/02-EventHandler.md)
+- [INotifyPropertyChanged](./H.%20이벤트%20%26%20데이터%20바인딩/03-INotifyPropertyChanged.md)
+- [BindingList](./H.%20이벤트%20%26%20데이터%20바인딩/04-BindingList.md)
+- [Mouse 이벤트 핸들링](./H.%20이벤트%20%26%20데이터%20바인딩/05-MouseEventHandler.md)
 
 🔼 [맨 위로](#-목차바로가기)
 
