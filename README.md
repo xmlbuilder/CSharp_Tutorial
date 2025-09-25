@@ -62,10 +62,10 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 🔼 [맨 위로](#-목차바로가기)
 
 ## D. 동등성 / 비교
-- [Equals 기본](./008-01-Equals.md)
-- [동등 연산자 오버로딩](./008-02-OverloadingEqualityOperators.md)
-- [문자열 동등성](./007-StringEquality.md)
-- [string equal 정리](./022-string_equal.md)
+- [Equals 기본](./D.%20동등성%20%20비교/01-Equals.md)
+- [동등 연산자 오버로딩](./D.%20동등성%20%20비교/02-OverloadingEqualityOperators.md)
+- [문자열 동등성](./D.%20동등성%20%20비교/03-StringEquality.md)
+- [string equal 정리](./D.%20동등성%20%20비교/04-string_equal.md)
 
 🔼 [맨 위로](#-목차바로가기)
 
