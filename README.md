@@ -31,7 +31,6 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [R. Stream File IO Encoding](#r-stream-file-io-encoding)
 - [T. DateTime, GUID](#t-datetime-guid)
 - [U. XML, Serialization](#u-xml-serialization)
-- ## 
 - [로드맵, 기여, 라이선스](#로드맵--기여--라이선스)
 
 ---
