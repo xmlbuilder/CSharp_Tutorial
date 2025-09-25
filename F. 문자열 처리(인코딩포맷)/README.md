@@ -12,5 +12,5 @@
   - [패딩 고정폭 포맷](./10-PaddingFixedFormat.md)
   - [통화 포맷팅](./11-CurrencyFormatting.md)
   - [Fixed column 심화 ①](./12.Fixed_column_string_심화.md)
-  - [Fixed column 심화 ②](./13.Fixed_column_string_심화2.md)\
+  - [Fixed column 심화 ②](./13.Fixed_column_string_심화2.md)
 ---
