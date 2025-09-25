@@ -31,6 +31,8 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [R. Stream File IO Encoding](#r-stream-file-io-encoding)
 - [T. DateTime, GUID](#t-datetime-guid)
 - [U. XML, Serialization](#u-xml-serialization)
+- [V. LINQ, Basic](#v-linq-basic)
+- [V. LINQ, Practical](#u-linq-practical)
 - [로드맵, 기여, 라이선스](#로드맵--기여--라이선스)
 
 ---
@@ -290,6 +292,35 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
   - [XML_String_직렬화](./U.%20XML%2C%20Serialization/08-XML_String_직렬화.md)
   - [XML_MemoryStream_직렬화](./U.%20XML%2C%20Serialization/09-XML_MemoryStream_직렬화.md)
   - [XML_직렬화_데이터전달](./U.%20XML%2C%20Serialization/07-XML_직렬화_데이터전달.md)
+ 
+
+## V. LINQ, Basic
+- [LINQBasic](./V.%20LINQ%2C%20Operator/01-LINQBasic.md)
+- [LINQLet변수](./V.%20LINQ%2C%20Operator/02-LINQLet변수.md)
+- [SequenceEqual](./V.%20LINQ%2C%20Operator/03-SequenceEqual.md)
+- [Select](./V.%20LINQ%2C%20Operator/04-Select.md)
+- [SelectCollection](./V.%20LINQ%2C%20Operator/05-SelectCollection.md)
+- [SelectMany](./V.%20LINQ%2C%20Operator/06-SelectMany.md)
+- [OrderDescending](./V.%20LINQ%2C%20Operator/07-OrderDescending.md)
+- [Zip](./V.%20LINQ%2C%20Operator/08-Zip.md)
+- [Join](./V.%20LINQ%2C%20Operator/09-Join.md)
+- [Cast](./V.%20LINQ%2C%20Operator/10-Cast.md)
+- [IEnumerableExtension](./V.%20LINQ%2C%20Operator/11-IEnumerableExtension.md)
+
+## V. LINQ, practical 
+- [Select_Where_Min_Max](./V.%20LINQ%2C%20Operator/12-Select_Where_Min_Max.md)
+- [Reverse_Join](./V.%20LINQ%2C%20Operator/13-Reverse_Join.md)
+- [SequenceEqual](./V.%20LINQ%2C%20Operator/14-SequenceEqual.md)
+- [OrderBy](./V.%20LINQ%2C%20Operator/15-OrderBy.md)
+- [Where_Join](./V.%20LINQ%2C%20Operator/16-Where_Join.md)
+- [Count](./V.%20LINQ%2C%20Operator/17-Count.md)
+- [Distinct](./V.%20LINQ%2C%20Operator/18-Distinct.md)
+- [Concat](./V.%20LINQ%2C%20Operator/19-Concat.md)
+- [Union](./V.%20LINQ%2C%20Operator/20-Union.md)
+- [DefaultIfEmpty](./V.%20LINQ%2C%20Operator/21-DefaultIfEmpty.md)
+- [Collection_많이쓰는것_정리](./V.%20LINQ%2C%20Operator/22-Collection_많이쓰는것_정리.md)
+
+****
 
 ---
 
