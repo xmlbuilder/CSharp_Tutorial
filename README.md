@@ -32,7 +32,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [T. DateTime, GUID](#t-datetime-guid)
 - [U. XML, Serialization](#u-xml-serialization)
 - [V. LINQ, Basic](#v-linq-basic)
-- [V. LINQ, Practical](#u-linq-practical)
+- [V. LINQ, Practical](#v-linq-practical)
 - [로드맵, 기여, 라이선스](#로드맵--기여--라이선스)
 
 ---
@@ -307,7 +307,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [Cast](./V.%20LINQ%2C%20Operator/10-Cast.md)
 - [IEnumerableExtension](./V.%20LINQ%2C%20Operator/11-IEnumerableExtension.md)
 
-## V. LINQ, practical 
+## V. LINQ, Practical 
 - [Select_Where_Min_Max](./V.%20LINQ%2C%20Operator/12-Select_Where_Min_Max.md)
 - [Reverse_Join](./V.%20LINQ%2C%20Operator/13-Reverse_Join.md)
 - [SequenceEqual](./V.%20LINQ%2C%20Operator/14-SequenceEqual.md)
