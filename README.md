@@ -29,6 +29,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [P. Reflection, Attribute](#p-reflection-attribute)
 - [Q. Regular Expression](#q-regular-expression)
 - [R. Stream File IO Encoding](#r-stream-file-io-encoding)
+- [T. DateTime, GUID](#t-datetime-guid)
 - [로드맵, 기여, 라이선스](#로드맵--기여--라이선스)
 
 ---
@@ -260,9 +261,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 
 🔼 [맨 위로](#-목차바로가기)
-
-## H. DateTime, GUID
-
+## T. DateTime, GUID
 - [DateTime 기본](./T.%20DateTime%2C%20GUID/01-DateTime기본.md)
 - [DateTime비교 암호화.md](./T.%20DateTime%2C%20GUID/02-DateTime비교_암호화.md)
 - [ DateTimeZone.md](./T.%20DateTime%2C%20GUID/03-DateTimeZone.md)
