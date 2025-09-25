@@ -20,6 +20,17 @@
   - [interface 기초](./15-interface.md)
   - [함수 중복 문제](./16-interface_함수_중복문제.md)
   - [default interface method](./17-interface_default.md)
- 
-  ---
+
+-  유용한 함수 들
+- [Newline](./18-Newline.md)
+- [optional](./19-optional.md)
+- [Indexer](./20-Indexer.md)
+- [Sealed](./21-Sealed.md)
+- [partial_class](./22-partial_class.md)
+- [CompareTo](./23-ompareTo.md)
+- [Find](./24-ind.md)
+- [Readonly속성](./25-Readonly속성.md)
+- [생성자](./26-Static_생성자.md)
+
+---
   
