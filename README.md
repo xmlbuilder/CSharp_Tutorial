@@ -195,17 +195,17 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 
 ## O. Thread, Async, 동시성
-- [Thread기본.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/01-Thread기본.md)
-- [hreadParam.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/02-ThreadParam.md)
-- [ThreadJoin.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/03-ThreadJoin.md)
-- [Volatile.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/04-Volatile.md)
-- [ThreadLock.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/05-ThreadLock.md)
-- [BackGroundWorker.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/06-BackGroundWorker.md)
-- [ThreadAsync.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/07-ThreadAsync.md)
-- [LazilyReadingFile.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/08-LazilyReadingFile.md)
-- [AsyncWaitSample.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/9-AsyncWaitSample.md)
-- [AsyncWaitSample.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/10-AsyncWaitSample.md)
-- [CountDownEvent.md](./K.%20OOP%20클래스%2C%20인터페이스%2C%20상속%2C%20구조체/11-CountDownEvent.md)
+- [Thread기본.md](.O.Thread%2C%20Async%2C%20동시성/01-Thread기본.md)
+- [hreadParam.md](.O.Thread%2C%20Async%2C%20동시성/02-ThreadParam.md)
+- [ThreadJoin.md](./O.Thread%2C%20Async%2C%20동시성/03-ThreadJoin.md)
+- [Volatile.md](./O.Thread%2C%20Async%2C%20동시성/04-Volatile.md)
+- [ThreadLock.md](./O.Thread%2C%20Async%2C%20동시성/05-ThreadLock.md)
+- [BackGroundWorker.md](./O.Thread%2C%20Async%2C%20동시성/06-BackGroundWorker.md)
+- [ThreadAsync.md](./O.Thread%2C%20Async%2C%20동시성/07-ThreadAsync.md)
+- [LazilyReadingFile.md](./O.Thread%2C%20Async%2C%20동시성/08-LazilyReadingFile.md)
+- [AsyncWaitSample.md](./O.Thread%2C%20Async%2C%20동시성/9-AsyncWaitSample.md)
+- [AsyncWaitSample.md](./O.Thread%2C%20Async%2C%20동시성/10-AsyncWaitSample.md)
+- [CountDownEvent.md](./O.Thread%2C%20Async%2C%20동시성/11-CountDownEvent.md)
 
 --
 ## 로드맵 · 기여 · 라이선스
