@@ -1,109 +1,186 @@
-# 📘 CSharp Tutorial (for C++ Developers)
+# CSharp Tutorial (for C++ Developers)
 
-## 🎯 프로젝트 소개
+C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(↔ Java)** 비교 중심으로 정리했습니다.
+특히 C++, C#, (필요 시 Java) 간의 동일 개념 비교와 표 기반 정리를 통해
+언어 차이를 한눈에 이해할 수 있도록 구성했습니다. 
+이 문서는 "사전처럼 검색"하는 자료가 아니라, 교재처럼 체계적 학습 경로를 제공합니다.
+ 
+아래 **📚 목차(바로가기)** 에서 원하는 주제를 곧장 찾아가세요.
 
-이 리포지토리는 **C++ 개발자가 C#을 학습할 때 꼭 알아야 할 개념**들을
-정리한 튜토리얼입니다.\
-특히 C++, C#, (필요 시 Java) 간의 **동일 개념 비교**와 **표 기반
-정리**를 통해\
-언어 차이를 한눈에 이해할 수 있도록 구성했습니다.
+---
 
-> ❗ ChatGPT와 같은 AI가 빠르게 답을 줄 수 있는 시대지만,\
-> **정리된 학습 흐름과 검증된 예제 코드**는 여전히 필요합니다.\
-> 이 문서는 "사전처럼 검색"하는 자료가 아니라, **교재처럼 체계적 학습
-> 경로**를 제공합니다.
+## 📚 목차(바로가기)
 
-------------------------------------------------------------------------
+- [A. 시작하기 & 언어 철학](#a-시작하기--언어-철학)
+- [B. Delegate / Lambda / Closure / Local Function](#b-delegate--lambda--closure--local-function)
+- [C. 캐스팅 & 타입 검사](#c-캐스팅--타입-검사)
+- [D. 동등성 / 비교](#d-동등성--비교)
+- [E. Null & 예외 처리](#e-null--예외-처리)
+- [F. 문자열 처리(인코딩/포맷)](#f-문자열-처리인코딩포맷)
+- [G. 컬렉션 & 배열 & 열거](#g-컬렉션--배열--열거)
+- [H. 이벤트 & 데이터 바인딩](#h-이벤트--데이터-바인딩)
+- [I. 전처리기 & 언어 기능 모음](#i-전처리기--언어-기능-모음)
+- [J. 경로/환경 & 기타 팁](#j-경로환경--기타-팁)
+- [K. OOP: 클래스/인터페이스/상속/구조체](#k-oop-클래스인터페이스상속구조체)
+- [L. 튜플](#l-튜플)
+- [M. 제네릭(설계 철학)](#m-제네릭설계-철학)
+- [로드맵 · 기여 · 라이선스](#로드맵--기여--라이선스)
 
-## 📂 문서 구성
+---
 
-주요 주제는 다음과 같이 정리되어 있으며, 각 문서는 `C# vs C++` (필요시
-Java) 비교 예제와 설명을 포함합니다.
+## A. 시작하기 & 언어 철학
+- [언어 설계의 철학](./000-언어설계의철학.md)
+- [.NET CLI로 Hello World](./004-DotNet_CLI_HelloWorld.md)
+- [typeof vs decltype (C# ↔ C++)](./003-typeof_vs_decltype.md)
+- [기본 자료형 개요](./001-기본자료형.md)
 
-### ✅ 언어 기초 비교
+🔼 [맨 위로](#-목차바로가기)
 
--   [Action / Func /
-    Predicate](./002-03-Delegates_Action_Func_Predicate.md)
--   [Lambda & Delegate](./002-06-Lambda_Delegate_CSharp_vs_CPP.md)
--   [Closure](./002-07-Closure_CSharp_vs_CPP.md)
--   [Local Function vs Lambda](./002-08-LocalFunction_vs_Lambda.md)
+## B. Delegate / Lambda / Closure / Local Function
+- [Delegate vs Function](./002-01-Delegate_vs_Function.md)
+- [Delegates, Func, Action](./002-02-Delegates_Func_Action.md)
+- [Delegates vs Java Functional](./002-03-Delegates_vs_Java_Functional.md)
+- [Multicast Delegate](./002-03-Multicast_Delegate.md)
+- [Predicate vs Function](./002-04-Predicate_vs_Function.md)
+- [Action 예외 처리: C# vs C++](./002-05-Action_Exception_When_vs_CPP.md)
+- [Lambda & Delegate: C# vs C++](./002-06-Lambda_Delegate_CSharp_vs_CPP.md)
+- [Closure: C# vs C++](./002-07-CSharp_vs_CPP_Closure.md)
+- [Delegate 패턴 모음: C# vs C++](./002-08-Delegate_Patterns_CSharp_vs_CPP.md)
+- [Local Function vs C++](./002-09-CSharp_LocalFunction_vs_CPP.md)
+- [Safe Delegate Pattern](./002-10-SafeDelegate_Pattern.md)
+- [BulletProof Extension Method](./002-11-BulletProof_ExtensionMethod_CSharp_vs_CPP.md)
+- [Delegates를 인자로 전달](./002-12-Passing_Delegates_as_Parameters_CSharp_vs_CPP.md)
+- [Extension Method 개요](./024-extension.md)
 
-### ✅ Null / 예외 처리
+🔼 [맨 위로](#-목차바로가기)
 
--   [Null 병합 연산자 (??)](./010-NullSafety_Operators.md)
--   [Null 조건부 연산자 (?. /
-    ?\[\])](./011-NullConditional_Operators.md)
--   [Action & Exception Handling](./003-02-Action_Exception.md)
+## C. 캐스팅 & 타입 검사
+- [Implicit/Explicit 변환 (C# vs C++)](./005-Implicit_Explicit_CSharp_vs_CPP.md)
+- [Explicit Conversion](./006-Explicit_Conversion.md)
+- [`as` 연산자](./021-as.md)
 
-### ✅ 형변환 / 동등성
+🔼 [맨 위로](#-목차바로가기)
 
--   [Implicit & Explicit Cast](./005-Implicit_Explicit_CSharp_vs_CPP.md)
--   [Equals & GetHashCode](./006-Equals_GetHashCode_CSharp_vs_CPP.md)
--   [String Equality](./007-String_Equality_CSharp_Java_CPP.md)
+## D. 동등성 / 비교
+- [Equals 기본](./008-01-Equals.md)
+- [동등 연산자 오버로딩](./008-02-OverloadingEqualityOperators.md)
+- [문자열 동등성](./007-StringEquality.md)
+- [string equal 정리](./022-string_equal.md)
 
-### ✅ 컬렉션 / 순회
+🔼 [맨 위로](#-목차바로가기)
 
--   [foreach / ForEach 비교](./008-ForEach_CSharp_Java_CPP.md)
+## E. Null & 예외 처리
+- [Null 안전 연산자(?? 등)](./010-NullSafety_Operators.md)
+- [Null 조건부 연산자(?. / ?[])](./011-NullConditional_Operators.md)
+- [try/catch 기본](./055-try_catch.md)
+- [checked / unchecked](./043-check_and_unchecked.md)
 
-------------------------------------------------------------------------
+🔼 [맨 위로](#-목차바로가기)
 
-## 🧾 특징
+## F. 문자열 처리(인코딩/포맷)
+- [UTF-8 정리](./023-utf-8.md)
+- [문자 처리 기초](./032.character_처리.md)
+- [문자열 치트시트](./026-string-cheatsheet.md)
+- [any/all 스타일 검사](./028-string_any_all.md)
+- [부분 문자열](./029-string_substring.md)
+- [split / join 치트시트](./030-string_split_join_cheatsheet.md)
+- [trim / replace / 대문자 치트시트](./031.trim-replace-uppercase-cheatsheet.md)
+- [문자열 → 숫자 변환](./033.string_to_number.md)
+- 고정폭 포맷 시리즈
+  - [Fixed column 문자열 ①](./034-01-Fixed_column_string.md)
+  - [패딩 고정폭 포맷](./034-02-PaddingFixedFormat.md)
+  - [통화 포맷팅](./034-03-CurrencyFormatting.md)
+  - [Fixed column 심화 ①](./035.Fixed_column_string_심화.md)
+  - [Fixed column 심화 ②](./036.Fixed_column_string_심화2.md)
 
--   **비교 표 중심**: 각 개념은 `C# vs C++ (vs Java)` 표로 먼저 제시 →
-    직관적 이해.
--   **실행 가능한 예제 코드**: 모든 문서는 컴파일 가능한 C#, C++ 예제
-    포함.
--   **실무 적용성**: 단순 문법 소개가 아니라, CAD/로보틱스/대용량 데이터
-    처리 등 공학적 응용을 염두에 둠.
--   **AI 보완**: AI가 생성하는 답변과 달리, **일관된 맥락과 학습 흐름**
-    제공.
+🔼 [맨 위로](#-목차바로가기)
 
-------------------------------------------------------------------------
+## G. 컬렉션 & 배열 & 열거
+- 배열/복사
+  - [Array copy](./014-01-Array_copy.md)
+  - [Array.Clear](./014-02-ArrayClear.md)
+  - [Shallow/Deep Copy](./014-03-ShallowDeepCopy.md)
+  - [Jagged Array](./015-Jagged_Array.md)
+  - [다차원 배열](./016-MultiDimensional_Arrays.md)
+- 열거/순회
+  - [foreach / ForEach](./009-ForEach.md)
+  - [IEnumerable 개요](./019-Eumerable.md)
+  - [가변 인자(params)](./017-VariableArgument.md)
+  - [Enum](./018-Enum.md)
+- 사전(Dictionary)
+  - [개념](./038-01-Dictionary개념.md)
+  - [요소 추가](./038-02-Dictionary요소추가.md)
+  - [Key 다루기](./038-03-DictionaryKey.md)
+  - [사용자 정의 Key](./038-04-Dictionary_사용자key.md)
+  - [실전 예제](./038-05-Dictionary실전예.md)
 
-## 🚀 실행 방법
+🔼 [맨 위로](#-목차바로가기)
 
-### C
+## H. 이벤트 & 데이터 바인딩
+- [Event 개념](./037-01-Event개념.md)
+- [EventHandler](./037-02-EventHandler.md)
+- [INotifyPropertyChanged](./037-02-INotifyPropertyChanged.md)
+- [BindingList](./037-04-BindingList.md)
+- [Mouse 이벤트 핸들링](./037-03-MouseEventHandler.md)
 
-``` bash
-# 새 프로젝트 생성
-dotnet new console -o SampleApp
-cd SampleApp
+🔼 [맨 위로](#-목차바로가기)
 
-# 빌드 & 실행
-dotnet build
-dotnet run
-```
+## I. 전처리기 & 언어 기능 모음
+- [C# 전처리기](./039-C# 전처리기.md)
+- [warning disable](./040-warning_disable.md)
+- [define & 조건부 컴파일](./041-define_and_condition.md)
+- [Named Argument](./042-named_argument.md)
+- [using](./046-using.md) · [IDisposable/Dispose](./047-Dispose.md)
+- [goto](./048-goto.md) · [default](./049-default.md)
 
-### C++
+🔼 [맨 위로](#-목차바로가기)
 
-``` bash
-g++ -std=c++17 sample.cpp -o sample
-./sample
-```
+## J. 경로/환경 & 기타 팁
+- [프로그램 경로 다루기](./027-programpath.md)
+- [static 변수](./025-static_variable.md)
 
-------------------------------------------------------------------------
+🔼 [맨 위로](#-목차바로가기)
 
-## 📅 로드맵
+## K. OOP: 클래스/인터페이스/상속/구조체
+- 클래스 기초/키워드
+  - [this](./053-this.md) · [static class](./054-static_class.md)
+  - [읽기 전용 속성](./052-읽기전용속성.md)
+- 생성자/수명주기
+  - [Static Constructor](./065-Static_Constructor.md)
+  - [Constructor Overloading](./066-Constructor_Overloading.md)
+  - [Optional Constructor](./067-Optional_Constructor.md)
+- 상속/오버라이드
+  - [base / 상속](./064-base_상속.md)
+  - [virtual/override](./063-virtual_override.md)
+  - [abstract/override](./062-abstract_override.md)
+  - [abstract class](./061-abstract_class.md)
+  - [abstract function](./061-abstract_class_abstract_function.md)
+  - [sealed](./068-Sealed.md)
+  - [익명 클래스](./069-익명클래스.md)
+  - [구조체](./070-구조체.md)
+- 인터페이스
+  - [interface 기초](./058-interface.md)
+  - [함수 중복 문제](./059-interface_함수_중복문제.md)
+  - [default interface method](./060-interface_default.md)
 
--   [x] Delegate / Lambda / Closure
--   [x] Null 병합 / 조건부 연산자
--   [x] Implicit / Explicit 변환
--   [x] Equals & GetHashCode
--   [ ] LINQ vs STL (진행 예정)
--   [ ] async/await vs C++20 coroutine
--   [ ] Generics vs Templates
--   [ ] GC vs RAII / IDisposable
+🔼 [맨 위로](#-목차바로가기)
 
-------------------------------------------------------------------------
+## L. 튜플
+- [Tuple](./050-Tuple.md)
+- [Tuple 정렬](./051-TupleSort.md)
 
-## 🤝 Contributing
+🔼 [맨 위로](#-목차바로가기)
 
--   오타 수정, 예제 코드 추가, 다른 언어(Java 등) 비교 제안 모두
-    환영합니다.
--   PR을 통해 기여하거나, Issue로 아이디어를 남겨주세요.
+## M. 제네릭(설계 철학)
+- [generic 설계 철학](./012-generic_설계철학.md)
 
-------------------------------------------------------------------------
+🔼 [맨 위로](#-목차바로가기)
 
-## 📜 License
+---
 
-MIT License
+## 로드맵 · 기여 · 라이선스
+
+- **로드맵(예정)**: LINQ vs STL, async/await vs C++20 coroutine, Generics vs Templates, GC vs RAII/IDisposable  
+- **기여**: 오타/예제/비교 추가 PR 환영  
+- **License**: MIT
+
