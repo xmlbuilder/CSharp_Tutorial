@@ -1,0 +1,16 @@
+## F. 문자열 처리(인코딩/포맷)
+- [UTF-8 정리](./01-utf-8.md)
+- [문자 처리 기초](./02.character_처리.md)
+- [문자열 치트시트](./03-string-cheatsheet.md)
+- [any/all 스타일 검사](./04-string_any_all.md)
+- [부분 문자열](./05-string_substring.md)
+- [split / join 치트시트](./06-string_split_join_cheatsheet.md)
+- [trim / replace / 대문자 치트시트](./07.trim-replace-uppercase-cheatsheet.md)
+- [문자열 → 숫자 변환](./08.string_to_number.md)
+- 고정폭 포맷 시리즈
+  - [Fixed column 문자열 ①](./09-Fixed_column_string.md)
+  - [패딩 고정폭 포맷](./10-PaddingFixedFormat.md)
+  - [통화 포맷팅](./11-CurrencyFormatting.md)
+  - [Fixed column 심화 ①](./12.Fixed_column_string_심화.md)
+  - [Fixed column 심화 ②](./13.Fixed_column_string_심화2.md)\
+---
