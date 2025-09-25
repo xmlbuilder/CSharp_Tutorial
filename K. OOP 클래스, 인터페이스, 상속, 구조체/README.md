@@ -16,21 +16,23 @@
   - [sealed](./12-Sealed.md)
   - [익명 클래스](./13-익명클래스.md)
   - [구조체](./14-구조체.md)
+  - [동일한_이름의멤버변수](./27-동일한_이름의멤버변수_문제.md)
+    
 - 인터페이스
   - [interface 기초](./15-interface.md)
   - [함수 중복 문제](./16-interface_함수_중복문제.md)
   - [default interface method](./17-interface_default.md)
 
--  유용한 함수 들
-- [Newline](./18-Newline.md)
-- [optional](./19-optional.md)
-- [Indexer](./20-Indexer.md)
-- [Sealed](./21-Sealed.md)
-- [partial_class](./22-partial_class.md)
-- [CompareTo](./23-ompareTo.md)
-- [Find](./24-ind.md)
-- [Readonly속성](./25-Readonly속성.md)
-- [생성자](./26-Static_생성자.md)
+- 유용한 함수 들
+  - [Newline](./18-Newline.md)
+  - [optional](./19-optional.md)
+  - [Indexer](./20-Indexer.md)
+  - [Sealed](./21-Sealed.md)
+  - [partial_class](./22-partial_class.md)
+  - [CompareTo](./23-ompareTo.md)
+  - [Find](./24-ind.md)
+  - [Readonly속성](./25-Readonly속성.md)
+  - [생성자](./26-Static_생성자.md)
 
 ---
   
