@@ -13,7 +13,7 @@
 - [TextReaderWriter](./09-TextReaderWriter.md)
 - [Encoding](./10-Encoding.md)
 - [BinaryWriterReader](./11-BinaryWriterReader.md)
-- [DefalteStream](./2-DefalteStream.md)
+- [DefalteStream](./12-DefalteStream.md)
 - [MemoryStream](./13-MemoryStream.md)
 - [파일줄번호넣기예제](./14-파일줄번호넣기예제.md)
 - [ZipFile](./15-ZipFile.md)
