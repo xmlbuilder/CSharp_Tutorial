@@ -18,8 +18,8 @@
   - [실전 예제](./14-Dictionary실전예.md)
 
 - Enumerable
- - [Collection_fill.md](./G.%20컬렉션%20%26%20배열%20%26%20열거/15-Collection_fill.md)
- - [Collection_Initializer.md](./G.%20컬렉션%20%26%20배열%20%26%20열거/16-Collection_Initializer.md)
- - [Enumerable.md](./G.%20컬렉션%20%26%20배열%20%26%20열거/17-Enumerable.md)
+ - [Collection_fill.md](./15-Collection_fill.md)
+ - [Collection_Initializer.md](./16-Collection_Initializer.md)
+ - [Enumerable.md](./17-Enumerable.md)
 
 ---
