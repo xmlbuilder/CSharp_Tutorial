@@ -33,6 +33,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [U. XML, Serialization](#u-xml-serialization)
 - [V. LINQ, Basic](#v-linq-basic)
 - [V. LINQ, Practical](#v-linq-practical)
+- [W. 기타 유용한 주제](#w-기타-유용한-주제)
 - [로드맵, 기여, 라이선스](#로드맵--기여--라이선스)
 
 ---
@@ -336,7 +337,44 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [DefaultIfEmpty](./V.%20LINQ%2C%20Operator/21-DefaultIfEmpty.md)
 - [Collection_많이쓰는것_정리](./V.%20LINQ%2C%20Operator/22-Collection_많이쓰는것_정리.md)
 
-****
+## W. 기타 유용한 주제
+- 프로세스/시스템
+  - [GetProcess](./W.%20기타%20유용한%20주제/01-GetProcess.md)
+  - [ProcessHandling](./W.%20기타%20유용한%20주제/20-ProcessHandling.md)
+    
+- Dynamic / Unsafe / Lazy / Expression
+  - [Dynamic](./W.%20기타%20유용한%20주제/02-Dynamic.md)
+  - [Unsafe 개념](./W.%20기타%20유용한%20주제/03-Unsafe_개념.md)
+  - [Unsafe 응용](./W.%20기타%20유용한%20주제/06-unsafe응용.md)
+  - [UnsafeToInt.md](./W.%20기타%20유용한%20주제/04.UnsafeToInt.md)
+  - [Lazy.md](./W.%20기타%20유용한%20주제/05-Lazy.md)
+  - [Expression.md](./W.%20기타%20유용한%20주제/07.Expression.md)
+- 값/참조/문자열 선언
+  - [ValueAndReference](./W.%20기타%20유용한%20주제/08-ValueAndReference.md)
+  - [문자열선언](./W.%20기타%20유용한%20주제/09-문자열선언.md)
+- 패턴 매칭
+  - [PatternMatching](./W.%20기타%20유용한%20주제/10-PatternMatching.md)
+
+- 사용자 틀리기 쉬운 부분
+  - [static_variable](./W.%20기타%20유용한%20주제/11-static_variable.md)
+  - [소멸자에_대한_오해](./W.%20기타%20유용한%20주제/12.소멸자에_대한_오해.md)
+  - [공변적_반공변적개념](./W.%20기타%20유용한%20주제/21-공변적_반공변적개념.md)
+  - [23-제네릭_타입_명시의_필요성.md](./W.%20기타%20유용한%20주제/23-제네릭_타입_명시의_필요성.md)
+ 
+- 자동화 툴을 만들기 위한 Attribute 응용
+   - [DLLMain호출](./W.%20기타%20유용한%20주제/13-DLLMain호출.md)
+   - [AttributeDLL전달](./W.%20기타%20유용한%20주제/14-AttributeDLL전달.md)
+   - [Attribute매크로정의](./W.%20기타%20유용한%20주제/15-Attribute매크로정의.md)
+   - [Attribute매크로생성및실행](./W.%20기타%20유용한%20주제/16-Attribute매크로생성및실행.md)
+
+- 사용자가 인지 하고 있으면 편한 기능들
+   - [DLLMain호출](./W.%20기타%20유용한%20주제/17-@심벌.md)
+   - [AttributeDLL전달](./W.%20기타%20유용한%20주제/8-CompositePattern.md)
+   - [Attribute매크로정의](./W.%20기타%20유용한%20주제/19-Marshal개념.md)
+   - [Attribute매크로생성및실행](./W.%20기타%20유용한%20주제/16-Attribute매크로생성및실행.md)
+   - [IEnumerable장점](./W.%20기타%20유용한%20주제/22-IEnumerable장점.md)
+   - [자원관리_필요성](./W.%20기타%20유용한%20주제/24-자원관리_필요성.md)
+   - [Collection_확장개념](./W.%20기타%20유용한%20주제/25-Collection_확장개념.md)
 
 ---
 
