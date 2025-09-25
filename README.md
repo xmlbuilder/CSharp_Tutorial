@@ -29,10 +29,10 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 ---
 
 ## A. 시작하기 & 언어 철학
-- [언어 설계의 철학](./000-언어설계의철학.md)
-- [.NET CLI로 Hello World](./004-DotNet_CLI_HelloWorld.md)
-- [typeof vs decltype (C# ↔ C++)](./003-typeof_vs_decltype.md)
-- [기본 자료형 개요](./001-기본자료형.md)
+- [언어 설계의 철학](./A.%20시작하기%20%26%20언어%20철학/01-언어설계의철학.md)
+- [.NET CLI로 Hello World](./A.%20시작하기%20%26%20언어%20철학/02-DotNet_CLI_HelloWorld.md)
+- [typeof vs decltype (C# ↔ C++)](./A.%20시작하기%20%26%20언어%20철학/03-typeof_vs_decltype.md)
+- [기본 자료형 개요](./A.%20시작하기%20%26%20언어%20철학/04-기본자료형.md)
 
 🔼 [맨 위로](#-목차바로가기)
 
