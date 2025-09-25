@@ -1,5 +1,5 @@
 
-## F. Stream · File I/O · Encoding
+## R. Stream · File I/O · Encoding
 **Stream 기본**
 
 - [Stream 정의](./01-Stream.md)
