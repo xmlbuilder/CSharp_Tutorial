@@ -1,4 +1,4 @@
-# 🧵 C# 
+# 🧵 C# Thread Param
 ```csharp
 namespace ThreadTest
 {
