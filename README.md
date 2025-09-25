@@ -258,6 +258,15 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [파일줄번호넣기예제](./R.%20Stream,%20FileIO,%20Encoding/14-파일줄번호넣기예제.md)
 - [ZipFile](./R.%20Stream,%20FileIO,%20Encoding/15-ZipFile.md)
 
+
+🔼 [맨 위로](#-목차바로가기)
+
+## H. DateTime, GUID
+
+- [DateTime 기본](./T.%20DateTime%2C%20GUID/01-DateTime기본.md)
+- [DateTime비교 암호화.md](./T.%20DateTime%2C%20GUID/02-DateTime비교_암호화.md)
+- [ DateTimeZone.md](./T.%20DateTime%2C%20GUID/03-DateTimeZone.md)
+- [GUID.md](./T.%20DateTime%2C%20GUID/04-GUID.md)
 ---
 
 ## 로드맵 · 기여 · 라이선스
