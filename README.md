@@ -64,9 +64,9 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 🔼 [맨 위로](#-목차바로가기)
 
 ## C. 캐스팅 & 타입 검사
-- [Implicit/Explicit 변환 (C# vs C++)](./005-Implicit_Explicit_CSharp_vs_CPP.md)
-- [Explicit Conversion](./006-Explicit_Conversion.md)
-- [`as` 연산자](./021-as.md)
+- [Implicit/Explicit 변환 (C# vs C++)](./C.%20캐스팅%20%26%20타입%20검사/01-Implicit_Explicit_CSharp_vs_CPP.md)
+- [Explicit Conversion](./C.%20캐스팅%20%26%20타입%20검사/02-Explicit_Conversion.md)
+- [`as` 연산자](./C.%20캐스팅%20%26%20타입%20검사/03-as.md)
 
 🔼 [맨 위로](#-목차바로가기)
 
