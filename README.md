@@ -28,6 +28,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [O. Thread, Async, 동시성](#o-thread-async-동시성)
 - [P. Reflection, Attribute](#p-reflection-attribute)
 - [Q. Regular Expression](#q-regular-expression)
+- [R. Stream File IO Encoding](#r-stream-file-io-encoding)
 - [로드맵, 기여, 라이선스](#로드맵--기여--라이선스)
 
 ---
@@ -236,7 +237,26 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [Regexpression 역참조](./Q.%20Regular%20Expression/10-Regexpression_역참조.md)
 - [Regexpression 대소문자 구분 무시](./Q.%20Regular%20Expression/11-Regexpression_대소문자구분무시.md)
 
+🔼 [맨 위로](#-목차바로가기)
 
+## R. Stream File IO Encoding
+**Stream 기본**
+
+- [Stream 정의](./R.%20Stream,%20FileIO,%20Encoding/README.md/01-Stream.md)
+- [Stream2](./R.%20Stream,%20FileIO,%20Encoding/README.md/02-Stream2.md)
+- [FileSteram.](./R.%20Stream,%20FileIO,%20Encoding/README.md/03-FileSteram.md)
+- [StreamReader](./R.%20Stream,%20FileIO,%20Encoding/README.md/04-StreamReader.md)
+- [줄단위 일기 샘플](./R.%20Stream,%20FileIO,%20Encoding/README.md/05-줄단위파일읽기.md)
+- [StreamReaderWriter](./R.%20Stream,%20FileIO,%20Encoding/README.md/06-StreamReaderWriter.md)
+- [NamedPipeServerStream.md](./R.%20Stream,%20FileIO,%20Encoding/README.md/07-NamedPipeServerStream.md)
+- [BufferedStream](./R.%20Stream,%20FileIO,%20Encoding/README.md/08-BufferedStream.md)
+- [TextReaderWriter](./R.%20Stream,%20FileIO,%20Encoding/README.md/09-TextReaderWriter.md)
+- [Encoding](./R.%20Stream,%20FileIO,%20Encoding/README.md/10-Encoding.md)
+- [BinaryWriterReader](./R.%20Stream,%20FileIO,%20Encoding/README.md/11-BinaryWriterReader.md)
+- [DefalteStream](./R.%20Stream,%20FileIO,%20Encoding/README.md/12-DefalteStream.md)
+- [MemoryStream](./R.%20Stream,%20FileIO,%20Encoding/README.md/13-MemoryStream.md)
+- [파일줄번호넣기예제](./R.%20Stream,%20FileIO,%20Encoding/README.md/14-파일줄번호넣기예제.md)
+- [ZipFile](./R.%20Stream,%20FileIO,%20Encoding/README.md/15-ZipFile.md)
 
 ---
 
