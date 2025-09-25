@@ -242,21 +242,21 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 ## R. Stream File IO Encoding
 **Stream 기본**
 
-- [Stream 정의](./R.%20Stream,%20FileIO,%20Encoding/README.md/01-Stream.md)
-- [Stream2](./R.%20Stream,%20FileIO,%20Encoding/README.md/02-Stream2.md)
-- [FileSteram.](./R.%20Stream,%20FileIO,%20Encoding/README.md/03-FileSteram.md)
-- [StreamReader](./R.%20Stream,%20FileIO,%20Encoding/README.md/04-StreamReader.md)
-- [줄단위 일기 샘플](./R.%20Stream,%20FileIO,%20Encoding/README.md/05-줄단위파일읽기.md)
-- [StreamReaderWriter](./R.%20Stream,%20FileIO,%20Encoding/README.md/06-StreamReaderWriter.md)
-- [NamedPipeServerStream.md](./R.%20Stream,%20FileIO,%20Encoding/README.md/07-NamedPipeServerStream.md)
-- [BufferedStream](./R.%20Stream,%20FileIO,%20Encoding/README.md/08-BufferedStream.md)
-- [TextReaderWriter](./R.%20Stream,%20FileIO,%20Encoding/README.md/09-TextReaderWriter.md)
-- [Encoding](./R.%20Stream,%20FileIO,%20Encoding/README.md/10-Encoding.md)
-- [BinaryWriterReader](./R.%20Stream,%20FileIO,%20Encoding/README.md/11-BinaryWriterReader.md)
-- [DefalteStream](./R.%20Stream,%20FileIO,%20Encoding/README.md/12-DefalteStream.md)
-- [MemoryStream](./R.%20Stream,%20FileIO,%20Encoding/README.md/13-MemoryStream.md)
-- [파일줄번호넣기예제](./R.%20Stream,%20FileIO,%20Encoding/README.md/14-파일줄번호넣기예제.md)
-- [ZipFile](./R.%20Stream,%20FileIO,%20Encoding/README.md/15-ZipFile.md)
+- [Stream 정의](./R.%20Stream,%20FileIO,%20Encoding/01-Stream.md)
+- [Stream2](./R.%20Stream,%20FileIO,%20Encoding/02-Stream2.md)
+- [FileSteram.](./R.%20Stream,%20FileIO,%20Encoding/03-FileSteram.md)
+- [StreamReader](./R.%20Stream,%20FileIO,%20Encoding/04-StreamReader.md)
+- [줄단위 일기 샘플](./R.%20Stream,%20FileIO,%20Encoding/05-줄단위파일읽기.md)
+- [StreamReaderWriter](./R.%20Stream,%20FileIO,%20Encoding/06-StreamReaderWriter.md)
+- [NamedPipeServerStream.md](./R.%20Stream,%20FileIO,%20Encoding/07-NamedPipeServerStream.md)
+- [BufferedStream](./R.%20Stream,%20FileIO,%20Encoding/08-BufferedStream.md)
+- [TextReaderWriter](./R.%20Stream,%20FileIO,%20Encoding/09-TextReaderWriter.md)
+- [Encoding](./R.%20Stream,%20FileIO,%20Encoding/10-Encoding.md)
+- [BinaryWriterReader](./R.%20Stream,%20FileIO,%20Encoding/11-BinaryWriterReader.md)
+- [DefalteStream](./R.%20Stream,%20FileIO,%20Encoding/12-DefalteStream.md)
+- [MemoryStream](./R.%20Stream,%20FileIO,%20Encoding/13-MemoryStream.md)
+- [파일줄번호넣기예제](./R.%20Stream,%20FileIO,%20Encoding/14-파일줄번호넣기예제.md)
+- [ZipFile](./R.%20Stream,%20FileIO,%20Encoding/15-ZipFile.md)
 
 ---
 
