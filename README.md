@@ -197,26 +197,28 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 🔼 [맨 위로](#-목차바로가기)
 
 ## O. Thread, Async, 동시성
-- [Thread기본](./O.Thread%2C%20Async%2C%20동시성/01-Thread기본.md)
+- [Thread 기본](./O.Thread%2C%20Async%2C%20동시성/01-Thread기본.md)
 - [hreadParam](./O.Thread%2C%20Async%2C%20동시성/02-ThreadParam.md)
-- [ThreadJoin](./O.Thread%2C%20Async%2C%20동시성/03-ThreadJoin.md)
+- [Thread Join](./O.Thread%2C%20Async%2C%20동시성/03-ThreadJoin.md)
 - [Volatile](./O.Thread%2C%20Async%2C%20동시성/04-Volatile.md)
 - [ThreadLock](./O.Thread%2C%20Async%2C%20동시성/05-ThreadLock.md)
 - [BackGroundWorker](./O.Thread%2C%20Async%2C%20동시성/06-BackGroundWorker.md)
 - [ThreadAsync](./O.Thread%2C%20Async%2C%20동시성/07-ThreadAsync.md)
 - [LazilyReadingFile](./O.Thread%2C%20Async%2C%20동시성/08-LazilyReadingFile.md)
-- [AsyncWaitSample](./O.Thread%2C%20Async%2C%20동시성/9-AsyncWaitSample.md)
-- [AsyncWaitSample](./O.Thread%2C%20Async%2C%20동시성/10-AsyncWaitSample.md)
+- [AsyncWait Sample](./O.Thread%2C%20Async%2C%20동시성/9-AsyncWaitSample.md)
+- [AsyncWait Sample](./O.Thread%2C%20Async%2C%20동시성/10-AsyncWaitSample.md)
 - [CountDownEvent](./O.Thread%2C%20Async%2C%20동시성/11-CountDownEvent.md)
 
+🔼 [맨 위로](#-목차바로가기)
+
 ## P. Reflection, Attribute
-- [UserAttribute](./P.%20Reflection%2C%20Attribute/01-UserAttribute.md)
-- [ReflectionProperty](./P.%20Reflection%2C%20Attribute/02-ReflectionProperty.md)
+- [User Attribute](./P.%20Reflection%2C%20Attribute/01-UserAttribute.md)
+- [Reflection Property](./P.%20Reflection%2C%20Attribute/02-ReflectionProperty.md)
 - [Reflection_MethodCreateInstance](./P.%20Reflection%2C%20Attribute/03-Reflection_MethodCreateInstance.md)
-- [ReflectionGeneric](./P.%20Reflection%2C%20Attribute/04-ReflectionGeneric.md)
-- [ReflectionGenericArgument](./P.%20Reflection%2C%20Attribute/05-ReflectionGenericArgument.md)
-- [ReflectionMembers](./P.%20Reflection%2C%20Attribute/06-ReflectionMembers.md)
-- [ReflectionSample](./P.%20Reflection%2C%20Attribute/07-ReflectionSample.md)
+- [Reflection Generic](./P.%20Reflection%2C%20Attribute/04-ReflectionGeneric.md)
+- [Reflection GenericArgument](./P.%20Reflection%2C%20Attribute/05-ReflectionGenericArgument.md)
+- [Reflection Members](./P.%20Reflection%2C%20Attribute/06-ReflectionMembers.md)
+- [Reflection Sample](./P.%20Reflection%2C%20Attribute/07-ReflectionSample.md)
 
 ---
 
