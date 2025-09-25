@@ -222,7 +222,6 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 ---
 
---
 ## 로드맵 · 기여 · 라이선스
 
 - **로드맵(예정)**: LINQ vs STL, async/await vs C++20 coroutine, Generics vs Templates, GC vs RAII/IDisposable  
