@@ -12,11 +12,11 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 ## 📚 목차(바로가기)
 
 - [A. 시작하기 & 언어 철학](#a-시작하기--언어-철학)
-- [B. Delegate / Lambda / Closure / Local Function](#b-delegate--lambda--closure--local-function)
+- [B. Delegate  Lambda  Closure  Local  Function](#b-delegate--lambda--closure--local-function)
 - [C. 캐스팅 & 타입 검사](#c-캐스팅--타입-검사)
-- [D. 동등성 / 비교](#d-동등성--비교)
+- [D. 동등성  비교](#d-동등성--비교)
 - [E. Null & 예외 처리](#e-null--예외-처리)
-- [F. 문자열 처리(인코딩/포맷)](#f-문자열-처리인코딩포맷)
+- [F. 문자열 처리(인코딩포맷)](#f-문자열-처리인코딩포맷)
 - [G. 컬렉션 & 배열 & 열거](#g-컬렉션--배열--열거)
 - [H. 이벤트 & 데이터 바인딩](#h-이벤트--데이터-바인딩)
 - [I. 전처리기 & 언어 기능 모음](#i-전처리기--언어-기능-모음)
@@ -36,7 +36,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 🔼 [맨 위로](#-목차바로가기)
 
-## B. Delegate / Lambda / Closure / Local Function
+## B. Delegate  Lambda  Closure  Local Function
 - [Delegate vs Function](./B.%20Delegate%20%20Lambda%20%20Closure%20%20Local%20Function/01-Delegate_vs_Function.md)
 - [Delegates, Func, Action](./B.%20Delegate%20%20Lambda%20%20Closure%20%20Local%20Function/02-Delegates_Func_Action.md)
 - [Delegates vs Java Functional](./B.%20Delegate%20%20Lambda%20%20Closure%20%20Local%20Function/03-Delegates_vs_Java_Functional.md)
@@ -61,7 +61,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 🔼 [맨 위로](#-목차바로가기)
 
-## D. 동등성 / 비교
+## D. 동등성  비교
 - [Equals 기본](./D.%20동등성%20%20비교/01-Equals.md)
 - [동등 연산자 오버로딩](./D.%20동등성%20%20비교/02-OverloadingEqualityOperators.md)
 - [문자열 동등성](./D.%20동등성%20%20비교/03-StringEquality.md)
@@ -77,21 +77,21 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 
 🔼 [맨 위로](#-목차바로가기)
 
-## F. 문자열 처리(인코딩/포맷)
-- [UTF-8 정리](./023-utf-8.md)
-- [문자 처리 기초](./032.character_처리.md)
-- [문자열 치트시트](./026-string-cheatsheet.md)
-- [any/all 스타일 검사](./028-string_any_all.md)
-- [부분 문자열](./029-string_substring.md)
-- [split / join 치트시트](./030-string_split_join_cheatsheet.md)
-- [trim / replace / 대문자 치트시트](./031.trim-replace-uppercase-cheatsheet.md)
-- [문자열 → 숫자 변환](./033.string_to_number.md)
+## F. 문자열 처리(인코딩포맷)
+- [UTF-8 정리](./F.%20문자열%20처리(인코딩포맷)/01-utf-8.md)
+- [문자 처리 기초](./F.%20문자열%20처리(인코딩포맷)/02.character_처리.md)
+- [문자열 치트시트](./F.%20문자열%20처리(인코딩포맷)/03-string-cheatsheet.md)
+- [any/all 스타일 검사](./F.%20문자열%20처리(인코딩포맷)/04-string_any_all.md)
+- [부분 문자열](./F.%20문자열%20처리(인코딩포맷)/05-string_substring.md)
+- [split / join 치트시트](./F.%20문자열%20처리(인코딩포맷)/06-string_split_join_cheatsheet.md)
+- [trim / replace / 대문자 치트시트](./F.%20문자열%20처리(인코딩포맷)/07.trim-replace-uppercase-cheatsheet.md)
+- [문자열 → 숫자 변환](./F.%20문자열%20처리(인코딩포맷)/08.string_to_number.md)
 - 고정폭 포맷 시리즈
-  - [Fixed column 문자열 ①](./034-01-Fixed_column_string.md)
-  - [패딩 고정폭 포맷](./034-02-PaddingFixedFormat.md)
-  - [통화 포맷팅](./034-03-CurrencyFormatting.md)
-  - [Fixed column 심화 ①](./035.Fixed_column_string_심화.md)
-  - [Fixed column 심화 ②](./036.Fixed_column_string_심화2.md)
+  - [Fixed column 문자열 ①](./F.%20문자열%20처리(인코딩포맷)/09-Fixed_column_string.md)
+  - [패딩 고정폭 포맷](./F.%20문자열%20처리(인코딩포맷)/10-PaddingFixedFormat.md)
+  - [통화 포맷팅](./F.%20문자열%20처리(인코딩포맷)/11-CurrencyFormatting.md)
+  - [Fixed column 심화 ①](./F.%20문자열%20처리(인코딩포맷)/12.Fixed_column_string_심화.md)
+  - [Fixed column 심화 ②](./F.%20문자열%20처리(인코딩포맷)/13.Fixed_column_string_심화2.md)
 
 🔼 [맨 위로](#-목차바로가기)
 
