@@ -275,6 +275,7 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
 - [MemoryStream](./R.%20Stream,%20FileIO,%20Encoding/13-MemoryStream.md)
 - [파일줄번호넣기예제](./R.%20Stream,%20FileIO,%20Encoding/14-파일줄번호넣기예제.md)
 - [ZipFile](./R.%20Stream,%20FileIO,%20Encoding/15-ZipFile.md)
+  
 🔼 [맨 위로](#-목차바로가기)
 
 
@@ -385,7 +386,6 @@ C++ 개발자가 C#을 학습할 때 자주 부딪히는 개념을 **C# ↔ C++(
    - [IEnumerable장점](./W.%20기타%20유용한%20주제/22-IEnumerable장점.md)
    - [자원관리_필요성](./W.%20기타%20유용한%20주제/24-자원관리_필요성.md)
    - [Collection_확장개념](./W.%20기타%20유용한%20주제/25-Collection_확장개념.md)
-
 
 
 🔼 [맨 위로](#-목차바로가기)
