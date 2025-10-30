@@ -47,16 +47,18 @@
 
 ## 4. C# Delegate 사용 예제
 
-``` csharp
+```csharp
 using System;
 
 delegate void DelegateType(string str);
-
+```
+```csharp
 class A
 {
     public void Print(string str) => Console.WriteLine($"Print: {str}");
 }
-
+```
+```csharp
 class Program
 {
     static void Main(string[] args)
@@ -86,7 +88,7 @@ class Program
 
 ## 5. C++ `std::function` 사용 예제
 
-``` cpp
+```cpp
 #include <iostream>
 #include <functional>
 
@@ -96,7 +98,8 @@ public:
         std::cout << "C++: " << msg << std::endl;
     }
 };
-
+```
+```cpp
 int main() {
     MyClass obj;
     std::function<void(std::string)> func = [&obj](std::string msg) {
@@ -108,13 +111,13 @@ int main() {
 
 ## 6. Functor (C++ 함수 객체)
 
-- **정의**: 함수처럼 동작하는 객체\
+- **정의**: 함수처럼 동작하는 객체  
     (`operator()` 연산자를 오버로드한 클래스)
 - **특징**
     - 함수 포인터처럼 호출 가능
     - 내부 상태(state) 보존 가능
 
-``` cpp
+```cpp
 #include <iostream>
 #include <string>
 
@@ -123,7 +126,8 @@ struct Functor {
         std::cout << "Functor: " << msg << std::endl;
     }
 };
-
+```
+```cpp
 int main() {
     Functor f;
     f("Hello"); // 함수처럼 호출
@@ -162,7 +166,7 @@ del("Hello");  // C#: Hello
 - **C++ std::function / Functor**
     범용적인 함수 포인터 대체, 커맨드 패턴, 상태 보존 연산자에 적합
 
-➡️ **C# delegate는 이벤트 중심, C++ std::function은 함수 추상화 중심**
+- ➡️ **C# delegate는 이벤트 중심, C++ std::function은 함수 추상화 중심**
 
 ---
 
