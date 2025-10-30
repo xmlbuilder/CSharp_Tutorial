@@ -1,7 +1,7 @@
 # 📘 C# Delegate / Func / Action 정리
 
 C#에서 **Delegate**, **Func**, **Action**은 이벤트 처리, 비동기 프로세스 처리, 콜백 설계 등에서 필수적인 요소입니다.  
-→ 공통적으로 **메서드를 객체처럼 다룰 수 있도록** 해주며, 코드 재사용성과 유연성을 크게 높여줍니다.
+  → 공통적으로 **메서드를 객체처럼 다룰 수 있도록** 해주며, 코드 재사용성과 유연성을 크게 높여줍니다.
 
 ## 1. Delegate
 
@@ -23,7 +23,8 @@ public class MyClass
         return (float)a / b;
     }
 }
-
+```
+```csharp
 public class Program
 {
     public static void Main()
@@ -36,7 +37,7 @@ public class Program
 }
 ```
 
-## 2. Func
+## 2. `Func`
 
 - **정의**: 반환 타입이 `void`가 아닌 메서드를 표현하는 **제네릭 델리게이트**  
 - **형식**: `Func<T1, T2, ..., TResult>`  
@@ -60,7 +61,8 @@ public class MyClass
         return "Number: " + number;
     }
 }
-
+```
+```csharp
 public class Program
 {
     public static void Main()
@@ -76,7 +78,7 @@ public class Program
 }
 ```
 
-## 3. Action
+## 3. `Action`
 
 - **정의**: 반환 타입이 `void`인 메서드를 표현하는 **제네릭 델리게이트**
 - **형식**: `Action<T1, T2, ...>` (입력 매개변수만 존재)
@@ -158,7 +160,7 @@ int main() {
 | 선언 | 명시적 정의 필요 | 기본 제공 제네릭 | 기본 제공 제네릭 | `std::function<R(Args...)>` |
 | 주요 용도 | 이벤트, 콜백 | 값 반환하는 메서드 표현 | void 메서드 표현 | 범용 함수 객체 저장소 |
 
-👉 Delegate는 **기본 개념**, Func/Action은 **편의 제공 제네릭 Delegate**  
-👉 C++은 **`std::function` + 람다/함수포인터/Functor**로 동일 개념을 지원 
+- 👉 Delegate는 **기본 개념**, Func/Action은 **편의 제공 제네릭 Delegate**  
+- 👉 C++은 **`std::function` + 람다/함수포인터/Functor**로 동일 개념을 지원 
 
 ---
