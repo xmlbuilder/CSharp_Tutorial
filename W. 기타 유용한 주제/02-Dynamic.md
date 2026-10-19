@@ -1,4 +1,4 @@
-# 🧠 Static Typing vs Dynamic Typing
+## 📘 Static vs Dynamic Typing
 
 | 구분               | Static Typing                              | Dynamic Typing                              |
 |--------------------|--------------------------------------------|---------------------------------------------|
@@ -11,8 +11,8 @@
 | 대표 언어          | C, C++, Java, C# 등                        | Python, JavaScript, Ruby 등                |
 | 예시               | `int x = 10;`                              | `x = 10`                                    |
 
-## ⚙️ C#의 dynamic 키워드
-C#은 기본적으로 Static Typed 언어지만, C# 4.0부터 dynamic 키워드를 도입해 Dynamic Typing을 부분적으로 지원합니다.
+### 📌 C#의 dynamic 키워드
+- C#은 기본적으로 Static Typed 언어지만, C# 4.0부터 dynamic 키워드를 도입해 Dynamic Typing을 부분적으로 지원.
 ```csharp
 dynamic val = 123;
 Console.WriteLine(val + 234); // 357
@@ -23,13 +23,10 @@ Console.WriteLine(val.ToUpper()); // ABC
 
 - dynamic은 컴파일러가 타입 체크를 생략하고, 런타임에 타입을 결정합니다.
 - object와 달리 dynamic은 캐스팅 없이 연산이나 메서드 호출이 가능합니다.
+- dynamic은 사실상 모든 타입을 받아들이는 런타임 타입 컨테이너라고 보면 됨.
 
-
-받을 수 있어요, JungHwan 님! C#의 dynamic은 기본 타입뿐 아니라 사용자 정의 구조체(struct)나 클래스(class)도 문제없이 담을 수 있습니다.
-dynamic은 사실상 모든 타입을 받아들이는 런타임 타입 컨테이너라고 보면 돼요.
-
-## ✅ 구조체와 클래스도 dynamic으로 처리 가능
-### 🔹 구조체 예시
+### 📌 구조체와 클래스도 dynamic으로 처리 가능
+#### 🔹 구조체 예시
 ```csharp
 struct Point {
     public int X;
@@ -40,10 +37,9 @@ struct Point {
 dynamic p = new Point { X = 10, Y = 20 };
 p.Print(); // 출력: (10, 20)
 ```
+- dynamic 변수 p는 Point 구조체를 담고 있고, 메서드도 호출 가능.
 
-- dynamic 변수 p는 Point 구조체를 담고 있고, 메서드도 호출 가능해요.
-
-### 🔹 클래스 예시
+#### 🔹 클래스 예시
 ```csharp
 class Person {
     public string Name { get; set; }
@@ -54,9 +50,9 @@ dynamic user = new Person { Name = "JungHwan" };
 user.Greet(); // 출력: Hello, JungHwan!
 ```
 
-- dynamic 변수 user는 Person 클래스 인스턴스를 담고 있고, 속성과 메서드 모두 접근 가능해요.
+- dynamic 변수 user는 Person 클래스 인스턴스를 담고 있고, 속성과 메서드 모두 접근 가능.
 
-## ⚠️ C# `dynamic` 키워드 사용 시 주의할 점
+### 📌 C# `dynamic` 키워드 사용 시 주의할 점
 
 | 항목                 | 설명                                                                 |
 |----------------------|----------------------------------------------------------------------|
@@ -68,11 +64,11 @@ user.Greet(); // 출력: Hello, JungHwan!
 | 리팩토링 위험 증가    | 타입이 명확하지 않아 자동 리팩토링 도구 사용 시 오류 발생 가능성 높음            |
 | 설계 일관성 저하      | 정적 타입 기반 설계와 충돌할 수 있어 시스템 전체의 타입 일관성이 깨질 수 있음     |
 
+---
 
-
-
-## 🔍 C++에서의 동적 타입 처리 (C++17)
-C++은 철저한 Static Typed 언어입니다. 하지만 void* 포인터나 std::any, std::variant 등을 통해 유사한 동적 타입 처리를 할 수 있습니다.
+### 📌 C++에서의 동적 타입 처리 (C++17) - any
+- C++은 철저한 Static Typed 언어입니다.
+- 하지만 void* 포인터나 std::any, std::variant 등을 통해 유사한 동적 타입 처리를 할 수 있습니다.
 ```cpp
 #include <any>
 #include <iostream>
@@ -88,7 +84,7 @@ std::cout << std::any_cast<std::string>(val).size() << std::endl; // 5
 - 타입을 꺼낼 때는 any_cast로 명시적 캐스팅이 필요합니다.
 
 
-## 🧩 `std::any` vs `void*` 핵심 비교
+### 📌 `std::any` vs `void*` 핵심 비교
 
 | 항목               | `void*`                                      | `std::any` (C++17~)                          |
 |--------------------|-----------------------------------------------|----------------------------------------------|
@@ -103,15 +99,15 @@ std::cout << std::any_cast<std::string>(val).size() << std::endl; // 5
 
 
 
-## 🧪 예시 비교
-### void* 방식
+### 📌 예시 비교
+#### 🔹 void* 방식
 ```cpp
 void* ptr = new int(42);
 // 타입 정보 없음 → 캐스팅 필요
 std::cout << *(int*)ptr << std::endl;
 ```
 
-### std::any 방식
+#### 🔹std::any 방식
 ```cpp
 std::any val = 42;
 if (val.type() == typeid(int)) {
@@ -120,14 +116,15 @@ if (val.type() == typeid(int)) {
 ```
 
 
-## 💡 결론
-- std::any는 타입 정보를 내부적으로 보존하고, 안전한 캐스팅을 제공하기 때문에 void*보다 훨씬 현대적인 대안이에요.
-- 하지만 여전히 타입을 명시적으로 알아야만 안전하게 꺼낼 수 있다는 점에서는 "내용물은 알 수 없다"는 느낌이 남아 있죠.
+### 📌 결론
+- std::any는 타입 정보를 내부적으로 보존하고, 안전한 캐스팅을 제공하기 때문에 void*보다 훨씬 현대적인 대안.
+- 하지만 여전히 타입을 명시적으로 알아야만 안전하게 꺼낼 수 있다는 점에서는 "내용물은 알 수 없다".
 
+---
 
-## ☕ Java에서의 동적 타입 처리
-Java도 Static Typed 언어입니다. 
-하지만 Object 타입과 Reflection API를 통해 런타임 타입 처리가 가능합니다.
+### 📌 Java에서의 동적 타입 처리
+- Java도 Static Typed 언어입니다. 
+- 하지만 Object 타입과 Reflection API를 통해 런타임 타입 처리가 가능합니다.
 ```java
 Object val = 123;
 System.out.println((int) val + 234); // 357
@@ -135,13 +132,13 @@ System.out.println((int) val + 234); // 357
 val = "abc";
 System.out.println(((String) val).toUpperCase()); // ABC
 ```
-
-
 - Object는 모든 클래스의 부모 타입으로 다양한 타입을 저장할 수 있습니다.
 - 하지만 캐스팅이 필수이며, 잘못된 캐스팅은 ClassCastException을 발생시킵니다.
 
-## 🐍 Python의 Dynamic Typing
-Python은 대표적인 Dynamic Typed 언어입니다. 변수 선언 시 타입을 명시하지 않으며, 런타임에 타입이 결정됩니다.
+---
+
+### 📌 Python의 Dynamic Typing
+- Python은 대표적인 Dynamic Typed 언어입니다. 변수 선언 시 타입을 명시하지 않으며, 런타임에 타입이 결정됩니다.
 ```python
 val = 123
 print(val + 234)  # 357
@@ -153,7 +150,7 @@ print(val.upper())  # ABC
 - 변수는 언제든지 다른 타입으로 재할당 가능
 - 타입 안정성은 낮지만, 코드가 간결하고 유연함
 
-## 🧩 언어별 타입 시스템 요약 비교
+### 📌 언어별 타입 시스템 요약 비교
 
 | 언어   | 타입 시스템       | 동적 타입 지원 방식                     | 특징 요약                                   |
 |--------|-------------------|------------------------------------------|---------------------------------------------|
@@ -164,24 +161,7 @@ print(val.upper())  # ABC
 
 
 
-## ✨ C# `dynamic` 키워드의 장점과 주의사항
-
-| 구분       | 내용                                                                 |
-|------------|----------------------------------------------------------------------|
-| **장점**   |                                                                      |
-| 유연한 타입 처리 | 다양한 타입을 하나의 변수에 담을 수 있어 런타임에 유연한 처리 가능         |
-| 간결한 코드     | `object`와 달리 캐스팅 없이 메서드 호출 및 연산 가능                     |
-| COM/Interop 활용 | COM 객체나 Reflection 객체를 다룰 때 복잡한 캐스팅 없이 사용 가능         |
-| 동적 언어 통합   | Python, JavaScript 등 DLR 기반 언어와의 연동이 쉬워짐                   |
-| 런타임 유연성    | 실행 시점에 타입 결정 가능, 상황에 따라 동적으로 로직 처리 가능           |
-| **주의사항** |                                                                      |
-| 런타임 오류 가능 | 컴파일러가 타입 체크를 하지 않기 때문에 실행 중 오류 발생 가능성 존재     |
-| 성능 저하       | 런타임 바인딩으로 인해 정적 타입보다 성능이 떨어질 수 있음               |
-| IDE 지원 약화   | IntelliSense, 자동완성, 리팩토링 기능이 제한될 수 있음                   |
-
-
-
-## 🧪 예시로 보는 간결함
+### 📌 예시로 보는 간결함
 ```csharp
 dynamic val = "hello";
 Console.WriteLine(val.ToUpper()); // HELLO
@@ -194,7 +174,7 @@ Console.WriteLine(((string)obj).ToUpper()); // 캐스팅 필요
 - dynamic은 캐스팅 없이 바로 메서드 호출 가능
 - object는 타입을 명확히 지정해줘야 해서 번거로움
 
-## 🆚 C# `dynamic` vs JavaScript `var`
+### 📌 C# `dynamic` vs JavaScript `var`
 
 | 항목               | C# `dynamic`                                  | JavaScript `var`                            |
 |--------------------|-----------------------------------------------|---------------------------------------------|
@@ -207,28 +187,13 @@ Console.WriteLine(((string)obj).ToUpper()); // 캐스팅 필요
 | 주요 차이점        | C#은 정적 언어 기반에 동적 요소를 추가한 것   | JavaScript는 본질적으로 동적 언어           |
 
 
-## ⚠️ C# `dynamic` 키워드의 유지 보수 리스크
 
-| 문제점               | 설명                                                                 |
-|----------------------|----------------------------------------------------------------------|
-| 런타임 오류 가능성    | 컴파일 시 타입 체크가 생략되므로, 잘못된 메서드나 속성 호출 시 실행 중 오류 발생 |
-| 자동완성 기능 약화    | IDE가 타입을 추론하지 못해 IntelliSense, 코드 탐색, 리팩토링 기능이 제한됨       |
-| 코드 가독성 저하      | 변수의 타입이 명확하지 않아 협업 시 코드 이해가 어려워짐                        |
-| 디버깅 난이도 상승    | 런타임 오류 발생 시 원인 추적이 어려워 디버깅 시간이 늘어남                     |
-| 테스트 복잡성 증가    | 다양한 타입을 처리할 수 있어 테스트 케이스를 더 많이 작성해야 안정성 확보 가능     |
-| 리팩토링 위험 증가    | 타입이 명확하지 않아 자동 리팩토링 도구 사용 시 오류 발생 가능성 높음            |
-| 설계 일관성 저하      | 정적 타입 기반 설계와 충돌할 수 있어 시스템 전체의 타입 일관성이 깨질 수 있음     |
-
-
-
-## ✅ 언제 써야 할까? 전략적 사용이 핵심
-dynamic은 특정 상황에서만 사용하는 게 좋아요:
-- COM Interop (예: Excel, Word 자동화)
-- Reflection 기반 객체 접근
-- DLR 기반 언어(Python, JavaScript 등)와 연동
-- 매우 유연한 API 설계가 필요한 경우
-
-
+### 📌 언제 써야 할까? 전략적 사용이 핵심
+- dynamic은 특정 상황에서만 사용하는 게 좋음:
+    - COM Interop (예: Excel, Word 자동화)
+    - Reflection 기반 객체 접근
+    - DLR 기반 언어(Python, JavaScript 등)와 연동
+    - 매우 유연한 API 설계가 필요한 경우
 
 ---
 
