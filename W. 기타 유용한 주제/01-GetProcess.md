@@ -1,6 +1,6 @@
-# 🧠 C# 예제 요약
+## 📘 C# Process
 
-C#에서 System.Diagnostics.Process를 사용해 현재 시스템의 모든 프로세스 목록을 가져오는 예제
+- C#에서 `System.Diagnostics.Process`를 사용해 현재 시스템의 모든 프로세스 목록을 가져오는 예제
 
 ```csharp
 Process[] processes = Process.GetProcesses(); // 모든 프로세스 가져오기
@@ -11,7 +11,8 @@ var cpu = proc.TotalProcessorTime;            // CPU 사용 시간
 
 - Process.GetProcesses()로 전체 프로세스 목록 조회
 - WorkingSet64, TotalProcessorTime으로 리소스 사용량 확인
-## 전체 소스
+
+### 📌 전체 소스
 ```csharp
 /*
 현재 로컬 컴퓨텅에 있는 모든 프로세스 목록을 가져옵니다.
@@ -57,12 +58,10 @@ class Program
         return 0;
     }
 }
-
 ```
 
-
-## ☕ Java에서 모든 프로세스 가져오기
-Java는 기본적으로 OS의 프로세스 목록을 직접 가져오는 API는 없지만, OS 명령어를 실행해서 파싱하는 방식으로 구현할 수 있어요.
+### 📌 Java에서 모든 프로세스 가져오기
+- Java는 기본적으로 OS의 프로세스 목록을 직접 가져오는 API는 없지만, OS 명령어를 실행해서 파싱하는 방식으로 구현.
 ```java
 import java.io.*;
 
@@ -84,27 +83,27 @@ public class ProcessList {
 - Windows: tasklist
 - Linux/macOS: ps -e 또는 top -b -n 1
 
-## 🐍 Python에서 모든 프로세스 가져오기
-Python은 psutil이라는 강력한 라이브러리를 통해 매우 쉽게 프로세스 정보를 가져올 수 있어요.
+### 📌 Python에서 모든 프로세스 가져오기
+- Python은 psutil이라는 강력한 라이브러리를 통해 매우 쉽게 프로세스 정보를 가져올 수 있음.
 
 ```python
 import psutil
 
 for proc in psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_info']):
     try:
-        print(f"PID: {proc.info['pid']}, Name: {proc.info['name']}, CPU: {proc.info['cpu_percent']}%, Mem: {proc.info['memory_info'].rss / 1024:.2f} KB")
+        print(f"PID: {proc.info['pid']}, Name: {proc.info['name']}, CPU: {proc.info['cpu_percent']}%,
+            Mem: {proc.info['memory_info'].rss / 1024:.2f} KB")
     except (psutil.NoSuchProcess, psutil.AccessDenied):
         pass
-
 ```
 
 - psutil.process_iter()로 전체 프로세스 순회
 - cpu_percent, memory_info 등 다양한 리소스 정보 제공
-설치 필요: pip install psutil
+- 설치 필요: pip install psutil
 
 
-## 💻 C++에서 모든 프로세스 가져오기 (Windows 기준)
-Windows에서는 ToolHelp32Snapshot API를 사용해 프로세스 목록을 가져올 수 있어요.
+### 📌 C++에서 모든 프로세스 가져오기 (Windows 기준)
+- Windows에서는 ToolHelp32Snapshot API를 사용해 프로세스 목록을 가져올 수 있음.
 
 ```cpp
 #include <windows.h>
@@ -125,13 +124,12 @@ int main() {
     CloseHandle(hSnapshot);
     return 0;
 }
-
 ```
 
 - CreateToolhelp32Snapshot()으로 프로세스 스냅샷 생성
 - Process32First() / Process32Next()로 반복 조회
 
-## 🧾 프로세스 목록 조회 비교 요약
+### 📌 프로세스 목록 조회 비교 요약
 
 | 언어       | 프로세스 조회 방식                          | 리소스 정보 조회 가능 | 플랫폼 의존성 | 특징 요약                                 |
 |------------|---------------------------------------------|------------------------|----------------|--------------------------------------------|
