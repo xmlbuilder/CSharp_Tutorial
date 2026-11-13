@@ -1,10 +1,10 @@
-# C# `Action`, `Func`, `Predicate` vs Java 함수형 인터페이스 비교
+## 📘 C# `Action`, `Func`, `Predicate` vs Java 함수형 인터페이스 비교
 
-이 문서는 C#의 **표준 델리게이트**(`Action`, `Func<T>`, `Predicate<T>`)를  
+- 이 문서는 C#의 **표준 델리게이트**(`Action`, `Func<T>`, `Predicate<T>`)를    
 Java의 **함수형 인터페이스**(`Consumer`, `Function`, `Predicate` 등)와 비교합니다.  
-각각의 사용 예제와 특징을 코드와 함께 정리했습니다.
 
-## 1) 매핑 표
+
+### 📌 1) 매핑 표
 
 | C# (System)       | 의미                  | Java (java.util.function) | 비고                                      |
 |------------------|-----------------------|---------------------------|-------------------------------------------|
@@ -18,7 +18,7 @@ Java의 **함수형 인터페이스**(`Consumer`, `Function`, `Predicate` 등)�
 | (없음)           | `(T1,T2)` → `bool`     | `BiPredicate<T1,T2>`      | C#에서는 `Func<T1,T2,bool>` 사용          |
 
 
-## 2) C# 코드 예제
+### 📌 2) C# 코드 예제
 
 ```csharp
 public static void Print(string msg) => Console.WriteLine(msg);
@@ -50,7 +50,7 @@ Action<int, int> _action3 = (x, y) => Console.WriteLine($"{x}, {y}");
 _action3(10, 23);                            // "10, 23"
 ```
 
-## 3) Java 대응 코드
+### 📌 3) Java 대응 코드
 
 ```java
 import java.util.function.*;
@@ -93,9 +93,9 @@ public class Program {
 }
 ```
 
-## 4) 합성/체이닝 비교
+### 📌 4) 합성/체이닝 비교
 
-### Consumer / Action
+#### 🔹 Consumer / Action
 
 - **Java**
 
@@ -113,7 +113,7 @@ Action<string> b = s => Console.WriteLine("B:" + s);
 (a + b)("x"); // A:x, B:x
 ```
 
-### Function / Func
+#### 🔹 Function / Func
 
 - **Java**
 
@@ -131,7 +131,7 @@ Function<Integer,Integer> fg = f.andThen(g);   // g(f(x))
     Func<int,int> fg = x => g(f(x));               // 직접 합성
     ```
 
-### Predicate
+#### 🔹 Predicate
 
 - **Java**
 
@@ -149,7 +149,7 @@ Predicate<string> hasA = s => s.Contains("a");
 Predicate<string> both = s => notEmpty(s) && hasA(s);
 ```
 
-## 5) 문법/시그니처 차이
+### 📌 5) 문법/시그니처 차이
 
 - **호출**
     - C#: `Invoke()` 또는 `_action("msg")`
@@ -161,14 +161,12 @@ Predicate<string> both = s => notEmpty(s) && hasA(s);
     - C#: `Func<T1,T2,...,TResult>` (마지막 인자가 반환형)
     - Java: `Function<T,R>` (두 번째가 반환형)
 
-## 6) 요약
+### 📌 6) 요약
 
-- **C# `Action`, `Func`, `Predicate`** ↔ **Java `Consumer`,
-    `Function`, `Predicate`**는 개념적으로 동일.
+- **C# `Action`, `Func`, `Predicate`** ↔ **Java `Consumer`, `Function`, `Predicate`** 는 개념적으로 동일.
 - 차이점:
-    - C#은 **멀티캐스트 델리게이트**가 장점.
-    - Java는 **합성 메서드**(`andThen`, `compose`, `negate` 등)가
-        풍부.
+    - C#은 **멀티캐스트 델리게이트** 가 장점.
+    - Java는 **합성 메서드**(`andThen`, `compose`, `negate` 등)가 풍부.
 - 변환 시 주의할 점:
     - 호출 메서드명 (`Invoke` vs `accept/apply/test`)
     - 반환형 위치 제네릭 순서
