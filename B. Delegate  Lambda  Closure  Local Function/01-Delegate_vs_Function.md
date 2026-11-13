@@ -46,7 +46,7 @@
     - 람다식은 델리게이트를 간결하게 표현
     - 이벤트는 델리게이트 기반으로 구현됨
 
-### 4. C# Delegate 사용 예제
+### 📌 4. C# Delegate 사용 예제
 
 ```csharp
 using System;
@@ -87,7 +87,7 @@ class Program
 }
 ```
 
-### 5. C++ `std::function` 사용 예제
+### 📌 5. C++ `std::function` 사용 예제
 
 ```cpp
 #include <iostream>
@@ -110,7 +110,7 @@ int main() {
 }
 ```
 
-### 6. Functor (C++ 함수 객체)
+### 📌 6. Functor (C++ 함수 객체)
 
 - **정의**: 함수처럼 동작하는 객체  
     (`operator()` 연산자를 오버로드한 클래스)
@@ -136,7 +136,7 @@ int main() {
 ```
 
 
-## 7. Delegate와 Functor의 유사성
+### 📌 7. Delegate와 Functor의 유사성
 
 - **공통점**
     - 객체에 바인딩된 함수 호출 표현 가능
@@ -160,14 +160,151 @@ MyDelegate del = obj.Print;
 del("Hello");  // C#: Hello
 ```
 
-## 8. 결론
+### 📌 8. 결론
 
 - **C# Delegate**
     이벤트, UI 바인딩, 멀티캐스트 콜백에 적합  
 - **C++ std::function / Functor**
     범용적인 함수 포인터 대체, 커맨드 패턴, 상태 보존 연산자에 적합
 
-- ➡️ **C# delegate는 이벤트 중심, C++ std::function은 함수 추상화 중심**
+- **C# delegate는 이벤트 중심, C++ std::function은 함수 추상화 중심**
 
 ---
 
+### 📌 C++ Delegate 구현
+```cpp
+#pragma once
+
+#include <functional>
+#include <vector>
+#include <algorithm>
+#include <utility>
+
+template<typename Signature>
+class Delegate;
+
+template<typename... Args>
+class Delegate<void(Args...)>
+{
+public:
+    using Function = std::function<void(Args...)>;
+    using HandlerId = std::size_t;
+
+private:
+    struct Handler
+    {
+        HandlerId id;
+        Function function;
+    };
+
+    std::vector<Handler> handlers_;
+    HandlerId nextId_ = 1;
+
+public:
+    HandlerId Add(Function function)
+    {
+        if (!function)
+            return 0;
+
+        const HandlerId id = nextId_++;
+
+        handlers_.push_back({
+            id,
+            std::move(function)
+        });
+
+        return id;
+    }
+
+    bool Remove(HandlerId id)
+    {
+        auto it = std::find_if(
+            handlers_.begin(),
+            handlers_.end(),
+            [id](const Handler& handler)
+            {
+                return handler.id == id;
+            });
+
+        if (it == handlers_.end())
+            return false;
+
+        handlers_.erase(it);
+        return true;
+    }
+
+    void Clear()
+    {
+        handlers_.clear();
+    }
+
+    [[nodiscard]] std::size_t Count() const
+    {
+        return handlers_.size();
+    }
+
+    // Functor
+    void operator()(Args... args) const
+    {
+        auto snapshot = handlers_;
+        for (const auto& handler : snapshot)
+        {
+            handler.function(args...);
+        }
+    }
+
+    void Invoke(Args... args) const
+    {
+        (*this)(args...);
+    }
+
+    Delegate& operator+=(Function function)
+    {
+        Add(std::move(function));
+        return *this;
+    }
+};
+```
+```cpp
+#include "delegate.hpp"
+#include <iostream>
+
+void FunctionA(int value)
+{
+    std::cout << "FunctionA: " << value << '\n';
+}
+
+void FunctionB(int value)
+{
+    std::cout << "FunctionB: " << value << '\n';
+}
+
+int main()
+{
+    Delegate<void(int)> changed;
+
+    auto idA = changed.Add(FunctionA);
+    auto idB = changed.Add(FunctionB);
+
+    changed.Invoke(100);
+
+    changed.Remove(idA);
+
+    changed(200);
+
+    Delegate<void(int)> onChanged;
+
+    onChanged += [](const int value) {
+        std::cout << "Handler A: " << value << '\n';
+    };
+
+    onChanged += [](const int value) {
+        std::cout << "Handler B: " << value << '\n';
+    };
+
+    onChanged(100);
+
+    return 0;
+}
+```
+---
