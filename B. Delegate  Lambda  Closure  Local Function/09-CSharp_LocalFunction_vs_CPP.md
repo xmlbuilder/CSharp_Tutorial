@@ -1,19 +1,15 @@
-# C# 로컬 함수 vs C++: 무엇이 되며, 무엇은 안 되나?
+## 📘 C# 로컬 함수 vs C++: 무엇이 되며, 무엇은 안 되나?
 
-## 개요
+### 📌 개요
 
--   **C#**: 메서드 내부에 **로컬 함수**(중첩 함수)를 "이름 있는 함수"로
-    선언할 수 있음. `yield`, `async/await`와도 잘 작동.
--   **C++**: **이름 있는 중첩 함수는 지원하지 않음.** 함수 안에 또 다른
-    "이름 있는 함수"를 정의할 수 없음.\
-    ➜ 실무에선 **람다(lambda)**, **정적 헬퍼(파일 스코프 정적 함수)**,
-    **펑터(구조체의 operator())**로 대체.
+- **C#**: 메서드 내부에 **로컬 함수**(중첩 함수)를 "이름 있는 함수"로 선언할 수 있음. `yield`, `async/await`와도 잘 작동.
+- **C++**: **이름 있는 중첩 함수는 지원하지 않음.** 함수 안에 또 다른 "이름 있는 함수"를 정의할 수 없음.
+    - 실무에선 **람다(lambda)**, **정적 헬퍼(파일 스코프 정적 함수)**, **펑터(구조체의 operator())** 로 대체.
 
-------------------------------------------------------------------------
 
-## 1) 원기둥 부피 계산 예제
+### 📌 1) 원기둥 부피 계산 예제
 
-### C
+#### 🔹 C#
 
 ``` csharp
 public static double GetCylinderVolume(double radius, double height)
@@ -28,7 +24,7 @@ public static double GetCylinderVolume(double radius, double height)
 }
 ```
 
-### C++ 대체 (람다 사용)
+#### 🔹 C++ 대체 (람다 사용)
 
 ``` cpp
 #include <cmath>
@@ -42,11 +38,9 @@ double GetCylinderVolume(double radius, double height) {
 }
 ```
 
-------------------------------------------------------------------------
+### 📌 2) 로컬 이터레이터 + yield
 
-## 2) 로컬 이터레이터 + yield
-
-### C
+#### 🔹 C#
 
 ``` csharp
 public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source,
@@ -63,7 +57,7 @@ public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> sour
 }
 ```
 
-### C++ 대체 (C++20 Ranges)
+#### 🔹 C++ 대체 (C++20 Ranges)
 
 ``` cpp
 #include <ranges>
@@ -75,14 +69,12 @@ auto Where(R&& source, Pred pred) {
 }
 ```
 
-> 참고: 표준 C++에는 `yield`가 없으므로, 지연 시퀀스는 Ranges로 처리.\
-> 진짜 `yield` 제너레이터는 외부 라이브러리(cppcoro 등) 필요.
+- 참고: 표준 C++에는 `yield`가 없으므로, 지연 시퀀스는 Ranges로 처리.
+- 진짜 `yield` 제너레이터는 외부 라이브러리(cppcoro 등) 필요.
 
-------------------------------------------------------------------------
+### 📌 3) async/await 로컬 함수
 
-## 3) async/await 로컬 함수
-
-### C
+#### 🔹 C#
 
 ``` csharp
 async Task WriteEmailsAsync()
@@ -92,7 +84,7 @@ async Task WriteEmailsAsync()
 }
 ```
 
-### C++ 대체 (`std::async` + 람다)
+#### 🔹 C++ 대체 (`std::async` + 람다)
 
 ``` cpp
 #include <future>
@@ -128,14 +120,10 @@ int main() {
 }
 ```
 
-------------------------------------------------------------------------
+### 📌 결론
 
-## 결론
-
--   **C#**: 로컬 함수, 로컬 async, 로컬 iterator(yield)까지 지원.
--   **C++**: 이름 있는 로컬 함수는 없음 → **람다로 대체**.
--   지연 시퀀스 → **C++20 ranges::filter** 권장.\
--   async → **std::async + 람다** 또는 Asio/코루틴 라이브러리 필요.
-
-👉 따라서, C#의 내부 함수는 C++에서 직접 구현 불가. **람다를 이용해
-대체**해야 한다.
+- **C#**: 로컬 함수, 로컬 async, 로컬 iterator(yield)까지 지원.
+- **C++**: 이름 있는 로컬 함수는 없음 → **람다로 대체**.
+- 지연 시퀀스 → **C++20 ranges::filter** 권장.
+- async → **std::async + 람다** 또는 Asio/코루틴 라이브러리 필요.
+- 따라서, C#의 내부 함수는 C++에서 직접 구현 불가. **람다를 이용해 대체**해야 한다.
