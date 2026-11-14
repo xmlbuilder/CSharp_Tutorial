@@ -1,20 +1,15 @@
-# C# Extension Method 기반 Bullet-Proofing 패턴 ↔ C++ 구현
+## 📘 C# Extension Method 기반 Bullet-Proofing 패턴 ↔ C++ 구현
 
-## 목적
+### 📌 목적
 
--   **공통 에러 처리/로깅**을 한 군데로 모아 **업무 코드의
-    잡음(noise)**을 줄이고,
--   정상/오류 흐름을 **명확하게 분리**하려는 유틸리티 패턴입니다.
--   C#에선 **확장 메서드(Extension Method)**로 예외 로깅 API를
-    자연스럽게 붙이고,
--   실행 래퍼 `Proof(Action code, Action<Exception> error)`로
-    **"실행-예외처리"** 보일러플레이트를 제거합니다.
+- **공통 에러 처리/로깅** 을 한 군데로 모아 **업무 코드의 잡음(noise)** 을 줄이고, 정상/오류 흐름을 **명확하게 분리** 하려는 유틸리티 패턴
+- C#에선 **확장 메서드(Extension Method)** 로 예외 로깅 API를 자연스럽게 붙이고,
+- 실행 래퍼 `Proof(Action code, Action<Exception> error)`로 **"실행-예외처리"** 
 
-------------------------------------------------------------------------
 
-## 1) C# 구성요소 분석
+### 📌 1) C# 구성요소 분석
 
-### (1) 실행 래퍼: `Bullet.Proof`
+#### 🔹 (1) 실행 래퍼: `Proof`
 
 ``` csharp
 public static void Proof(Action code, Action<Exception> error)
@@ -25,17 +20,17 @@ public static void Proof(Action code, Action<Exception> error)
     }
     catch (Exception ex)
     {
-        ex.Log("BP2200-ERR-Unexpected Error");
+        ex.Log("ERR-Unexpected Error");
         error(ex);
     }
 }
 ```
 
--   `code` : 실제 비즈니스 로직(예외 발생 가능)
--   `error`: 예외 후 **콜백**(상태 업데이트, 사용자 메시지 변환 등)
--   내부에서 `ex.Log(...)`로 **일관된 로깅 규약**을 강제
+- `code` : 실제 비즈니스 로직(예외 발생 가능)
+- `error`: 예외 후 **콜백**(상태 업데이트, 사용자 메시지 변환 등)
+- 내부에서 `ex.Log(...)`로 **일관된 로깅 규약** 을 강제
 
-### (2) 확장 메서드: `Exception.Log(...)`
+#### 🔹 (2) 확장 메서드: `Exception.Log(...)`
 
 ``` csharp
 public static void Log(this Exception error, string messageID)
@@ -47,23 +42,22 @@ public static void Log(this Exception error, string messageID)
 }
 ```
 
--   `this Exception` 시그니처로 **확장 메서드** 구현 → `ex.Log(...)`처럼
-    인스턴스 메서드처럼 사용
--   메시지 ID 규격(`BP2200-...`)과 스택 트레이스를 통일된 포맷으로 출력
+- `this Exception` 시그니처로 **확장 메서드** 구현 → `ex.Log(...)`처럼 인스턴스 메서드처럼 사용
+-  메시지 ID 규격(`ERR-...`)과 스택 트레이스를 통일된 포맷으로 출력
 
-### (3) 사용 패턴
+#### 🔹 (3) 사용 패턴
 
 ``` csharp
 string result = string.Empty;
-Bullet.Proof(
+Proof(
     () => {
-        result = "DST5900-INF-NO Exception in this code";
+        result = "INF-NO Exception in this code";
         throw new Exception("MESSAGE");
     },
     error => {
-        result = "DTS6200-ERR-An Execption happend look at console log";
+        result = "ERR-An Execption happend look at console log";
         if (error.Message.Contains("SomeMarker"))
-            result = "DST6500-ERR-Some marker was founded in the execption";
+            result = "ERR-Some marker was founded in the execption";
     }
 );
 ```
