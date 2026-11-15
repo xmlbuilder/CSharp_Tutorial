@@ -43,7 +43,7 @@ public static void Log(this Exception error, string messageID)
 ```
 
 - `this Exception` 시그니처로 **확장 메서드** 구현 → `ex.Log(...)`처럼 인스턴스 메서드처럼 사용
--  메시지 ID 규격(`ERR-...`)과 스택 트레이스를 통일된 포맷으로 출력
+- 메시지 ID 규격(`ERR-...`)과 스택 트레이스를 통일된 포맷으로 출력
 
 #### 🔹 (3) 사용 패턴
 
@@ -62,17 +62,14 @@ Proof(
 );
 ```
 
--   정상 흐름은 `code`에서, 오류 시나리오는 `error` 콜백에서 처리 →
-    **흐름 분기 명확**
+- 정상 흐름은 `code`에서, 오류 시나리오는 `error` 콜백에서 처리 → **흐름 분기 명확**
+- 참고: 지금 구현은 **반환값 없는 `Action` 전용** 입니다.
+- 필요하면 `Func<T>` 버전을 추가해 결과를 반환하도록 확장.
 
-> 참고: 지금 구현은 **반환값 없는 `Action` 전용**입니다. 필요하면
-> `Func<T>` 버전을 추가해 결과를 반환하도록 확장하세요.
 
-------------------------------------------------------------------------
+### 📌 2) C# 개선 아이디어 (선택)
 
-## 2) C# 개선 아이디어 (선택)
-
-### (A) 반환값 지원 (`Func<T>`)
+#### 🔹 (A) 반환값 지원 (`Func<T>`)
 
 ``` csharp
 public static T Proof<T>(Func<T> code, Func<Exception, T> error)
@@ -86,7 +83,7 @@ public static T Proof<T>(Func<T> code, Func<Exception, T> error)
 }
 ```
 
-### (B) 메시지 ID/로거 주입
+#### 🔹 (B) 메시지 ID/로거 주입
 
 ``` csharp
 public static void Proof(Action code, Action<Exception> onError, string messageId,
@@ -101,15 +98,13 @@ public static void Proof(Action code, Action<Exception> onError, string messageI
 }
 ```
 
-------------------------------------------------------------------------
 
-## 3) C++로의 대응 구현
+### 📌 3) C++로의 대응 구현
 
-C++에는 **확장 메서드** 개념이 없습니다. 대신, - **네임스페이스의 자유
-함수**로 로깅을 제공하고, - **실행 래퍼(`Proof`)**는 템플릿/람다로
-구성합니다.
+- C++에는 **확장 메서드** 개념이 없습니다. 대신, - **네임스페이스의 자유함수**로 로깅을 제공하고,
+- **실행 래퍼(`Proof`)** 는 템플릿/람다로구성합니다.
 
-### (1) C++ 유틸: `bullet::proof` & `bullet::log`
+#### 🔹 (1) C++ 유틸: `bullet::proof` & `bullet::log`
 
 ``` cpp
 #include <exception>
@@ -127,7 +122,7 @@ inline void log(const std::exception& e, const std::string& messageId) {
 }
 
 template <typename FCode, typename FErr>
-void proof(FCode&& code, FErr&& on_error, const std::string& messageId = "BP2200-ERR-Unexpected Error")
+void proof(FCode&& code, FErr&& on_error, const std::string& messageId = "ERR-Unexpected Error")
 {
     try {
         std::forward<FCode>(code)();
@@ -140,10 +135,10 @@ void proof(FCode&& code, FErr&& on_error, const std::string& messageId = "BP2200
 } // namespace bullet
 ```
 
--   C#의 `ex.Log(...)`를 **`bullet::log(ex, "...")`**로 대체
--   `proof`는 C#의 `Bullet.Proof`와 동일 개념: **실행-예외-로깅-후처리**
+-   C#의 `ex.Log(...)`를 **`bullet::log(ex, "...")`** 로 대체
+-   `proof`는 C#의 `Proof`와 동일 개념: **실행-예외-로깅-후처리**
 
-### (2) 사용 예 (C++)
+#### 🔹 (2) 사용 예 (C++)
 
 ``` cpp
 #include <iostream>
@@ -153,13 +148,13 @@ int main() {
     std::string result;
     bullet::proof(
         [&] { // code
-            result = "DST5900-INF-NO Exception in this code";
+            result = "INF-NO Exception in this code";
             throw std::runtime_error("MESSAGE");
         },
         [&](const std::exception& e) { // error
-            result = "DTS6200-ERR-An Execption happend look at console log";
+            result = "ERR-An Execption happend look at console log";
             if (std::string(e.what()).find("SomeMarker") != std::string::npos) {
-                result = "DST6500-ERR-Some marker was founded in the execption";
+                result = "ERR-Some marker was founded in the execption";
             }
         }
     );
@@ -168,19 +163,17 @@ int main() {
 }
 ```
 
-**출력 예시(개념상):**
+#### 🔹 출력 예시
+```
+ERR-Unexpected Error
+MESSAGE
 
-    BP2200-ERR-Unexpected Error
-    MESSAGE
+ERR-An Execption happend look at console log
+```
+- 주의: C++ 표준은 스택 트레이스 표준 API가 없습니다. (C++23 `std::stacktrace`가 일부 구현에 존재)
+- 실무에선 `std::stacktrace`(지원 구현), Boost.Stacktrace, 플랫폼 API를 사용해 보강.
 
-    DTS6200-ERR-An Execption happend look at console log
-
-> 주의: C++ 표준은 스택 트레이스 표준 API가 없습니다. (C++23
-> `std::stacktrace`가 일부 구현에 존재)\
-> 실무에선 `std::stacktrace`(지원 구현), Boost.Stacktrace, 플랫폼 API를
-> 사용해 보강하세요.
-
-### (3) 반환값 지원 버전
+#### 🔹 (3) 반환값 지원 버전
 
 ``` cpp
 namespace bullet {
@@ -197,13 +190,11 @@ auto proof_ret(FCode&& code, FErr&& on_error, const std::string& messageId = "BP
 } // namespace bullet
 ```
 
-------------------------------------------------------------------------
 
-## 4) 요약
+#### 🔹 4) 요약
 
--   **C#**: `Exception` 확장 메서드 + `Proof` 래퍼로 **로깅 규약**과
-    **오류 분기**를 표준화.
--   **C++**: 확장 메서드는 없으므로 **네임스페이스 자유함수**로 대체,
-    `proof` 템플릿으로 동일한 흐름 구성.
--   필요 시 **반환형 지원**, **로거 주입**, **메시지 ID 정책** 등을 양
-    언어 모두에서 확장 가능.
+- **C#**: `Exception` 확장 메서드 + `Proof` 래퍼로 **로깅 규약** 과 **오류 분기** 를 표준화.
+- **C++**: 확장 메서드는 없으므로 **네임스페이스 자유함수** 로 대체, roof` 템플릿으로 동일한 흐름 구성.
+- 필요 시 **반환형 지원**, **로거 주입**, **메시지 ID 정책** 등을 양 언어 모두에서 확장 가능.
+
+---
