@@ -1,6 +1,6 @@
-# Overloading equality operators
+## 📘 Overloading equality operators
 
-## 🧠 핵심 비교 기준
+### 📌 핵심 비교 기준
 
 | 언어       | 기본 동등성 비교                          | 사용자 정의 비교 방식         | 연산자 오버로드 지원         | 박싱 회피 / 성능 최적화 |
 |------------|-------------------------------------------|-------------------------------|-------------------------------|--------------------------|
@@ -9,9 +9,9 @@
 | **Java**   | `Object.equals`, `hashCode`               | `equals()` 오버라이드         | `==`은 참조 비교만 가능       | 해당 없음               |
 | **Python** | `__eq__`, `__hash__`                      | `__eq__`, `__hash__` 오버라이드 | `==`, `!=`은 `__eq__`에 연결 | 해당 없음               |
 
-## 🔍 각 언어별 설명
+### 📌 각 언어별 설명
 
-### 🟦 C#
+#### 🔹 C#
 ```csharp
 /*
 1. object.Equals and object.GetHashCode
@@ -76,7 +76,7 @@ class Program
 - ==, != 연산자 오버로드를 통해 직관적인 비교 문법을 제공합니다.
 - Dictionary, HashSet 같은 컬렉션에서 성능 향상에 유리합니다.
 
-## 🟨 C++
+#### 🔹 C++
 - operator==와 operator!=를 직접 오버로드하여 동등성 비교를 정의합니다.
 - std::hash를 오버로드하면 unordered_map, unordered_set에서 사용할 수 있습니다.
 - 인터페이스 기반 비교는 없지만, 템플릿과 연산자 오버로드로 유연하게 구현 가능합니다.
@@ -97,9 +97,9 @@ namespace std {
 }
 ```
 
-## 🟥 Java
+#### 🔹 Java
 - Object.equals(Object obj)와 hashCode()를 오버라이드하여 동등성 비교를 정의합니다.
-- ==는 참조 비교이므로, 값 비교에는 equals()를 반드시 사용해야 합니다.
+- `==`는 참조 비교이므로, 값 비교에는 `equals()`를 반드시 사용해야 합니다.
 - Comparable<T>는 정렬을 위한 인터페이스이며, IEquatable<T>에 해당하는 인터페이스는 없습니다.
 ```java
 public class Student {
@@ -118,7 +118,7 @@ public class Student {
 }
 ```
 
-## 🟩 Python
+#### 🔹 Python
 - __eq__ 메서드를 오버라이드하여 동등성 비교를 정의합니다.
 - __hash__를 함께 정의하면 set, dict에서 사용할 수 있습니다.
 - ==, != 연산자는 __eq__, __ne__에 연결되어 자동 호출됩니다.
@@ -135,7 +135,7 @@ class Student:
 ```
 
 
-## 💡 요약
+### 📌 요약
 - C#은 IEquatable<T>와 연산자 오버로드를 통해 타입 안전성과 성능을 모두 챙길 수 있는 구조입니다.
 - C++은 연산자 오버로드와 템플릿을 통해 유연하게 구현하지만 명시적입니다.
 - Java는 equals()와 hashCode()를 오버라이드해야 하며, 연산자 오버로드는 불가능합니다.
